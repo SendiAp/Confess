@@ -68,3 +68,5 @@ class User(Client):
                 "Bot Berhenti."
             )
             sys.exit()
+
+bot = User()
