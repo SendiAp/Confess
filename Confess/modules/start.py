@@ -27,4 +27,4 @@ async def confess(client : Bot, message : Message):
             return
         user_id = user.id
 
-    await bot send_message(user_id, "Halo")
+    await bot.send_message(user_id, "Halo")
