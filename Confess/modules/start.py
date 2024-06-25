@@ -9,23 +9,22 @@ from Confess import *
 
 @Bot.on_message(filters.command("confess"))
 async def confess(client : Bot, message : Message):
-    quantity = 1
-    inp = message.text.split(None, 2)[1]
-    user = await client.get_chat(inp)
-    spam_text = ' '.join(message.command[2:])
-    quantity = int(quantity)
-
+    text = None
     if message.reply_to_message:
-        reply_to_id = message.reply_to_message.message_id
-        for _ in range(quantity):
-            await message.reply_text("Message Sended Successfully !")
-            await bot.send_message(user.id, spam_text,
-                                      reply_to_messsge_id=reply_to_id)
-            await asyncio.sleep(0.15)
-        return
+        user_id = message.reply_to_message.from_user.id
+    else:
+        text = message.text.split()
+        if len(text) < 2:
+            await message.reply_text("Maaf, format yang Anda berikan salah. Mohon balas ke pengguna atau berikan username/user ID.")
+            return
+        username = text[1]
+        try:
+            user = await client.get_users(username)
+        except ValueError:
+            user = None
+        if user is None:
+            await message.reply_text(f"Maaf, pengguna {username} tidak ditemukan.")
+            return
+        user_id = user.id
 
-    for _ in range(quantity):
-        await bot.send_message(user.id, spam_text)
-        await message.reply_text("Message Sended Successfully !")
-        await asyncio.sleep(0.15)
-      
+    await bot.send_message(user_id, "Halo")
