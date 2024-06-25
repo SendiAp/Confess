@@ -56,10 +56,17 @@ class User(Client):
         self.LOGGER = LOGGER
 
     async def start(self):
-        await super().start()
-        usr_bot_me = self.me
-        self.LOGGER(__name__).info(
-            f"@{usr_bot_me.username} based on Pyrogram v{__version__} "
-        )
+        try:
+            await super().start()
+            usr_bot_me = self.me
+            self.LOGGER(__name__).info(
+                f"@{usr_bot_me.username} based on Pyrogram v{__version__}"
+            )
+        except Exception as a:
+            self.LOGGER(__name__).warning(a)
+            self.LOGGER(__name__).info(
+                "Bot Berhenti."
+            )
+            sys.exit()
 
 bot = User()
