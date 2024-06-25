@@ -48,10 +48,9 @@ class User(Client):
             name="User",
             api_hash=API_HASH,
             api_id=API_ID,
-            workers=BOT_WORKERS,
+            plugins={"root": "Confess/modules"},
+            workers=4,
             session_string=SESSION,
-            plugins=dict(root="Confess/modules"),
-            in_memory=True,
         )
         self.LOGGER = LOGGER
 
