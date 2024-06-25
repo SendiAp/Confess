@@ -1,8 +1,9 @@
 import asyncio
-from Confess import app, bot
+from Confess import app, User
 from Confess.config import LOGGER
 from pyrogram import idle
 
+bot = User()
 
 loop = asyncio.get_event_loop_policy().get_event_loop()
 
