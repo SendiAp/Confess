@@ -18,7 +18,7 @@ class Bot(Client):
             "Bot",
             api_hash=API_HASH,
             api_id=API_ID,
-            plugins={"root": "Sabrina/tebakkata"},
+            plugins={"root": "Confess/modules"},
             workers=4,
             bot_token=BOT_TOKEN,
         )
@@ -41,3 +41,25 @@ class Bot(Client):
             sys.exit()
 
 app = Bot()
+
+class User(Client):
+    def __init__(self):
+        super().__init__(
+            name="bot",
+            api_hash=API_HASH,
+            api_id=API_ID,
+            workers=BOT_WORKERS,
+            session_string=SESSION,
+            plugins=dict(root="Confess/modules"),
+            in_memory=True,
+        )
+        self.LOGGER = LOGGER
+
+    async def start(self):
+        await super().start()
+        usr_bot_me = self.me
+        self.LOGGER(__name__).info(
+            f"@{usr_bot_me.username} based on Pyrogram v{__version__} "
+        )
+
+bot = User()
