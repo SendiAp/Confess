@@ -1,0 +1,39 @@
+{
+    "name": "Kantor-Post",
+    "description": "Game Menfess.",
+    "logo": "https://telegra.ph/file/c78bb1efdeed38ee16eb2.png",
+    "keywords": ["telegram", "game", "pyrogram"],
+    "repository": "https://github.com/SendiAp/Kantor-Post",
+    "env": {
+        "API_ID": {
+            "description": "Your APP ID",
+            "value": ""
+        },
+        "API_HASH": {
+            "description": "Your API Hash",
+            "value": ""
+        },
+        "BOT_TOKEN": {
+            "description": "Your Bot Token From @BotFather",
+            "value": ""
+        },        
+        "SESSION": {
+            "description": "string session",
+            "value": "-100"
+        }
+    },
+    "buildpacks": [
+        {
+          "url": "heroku/python"
+        },
+        {
+          "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git"
+        }
+    ],
+    "formation": {
+        "worker": {
+          "quantity": 1,
+          "size": "basic"
+        }
+      }
+}
