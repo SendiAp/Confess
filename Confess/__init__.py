@@ -45,7 +45,7 @@ app = Bot()
 class User(Client):
     def __init__(self):
         super().__init__(
-            name="bot",
+            name="User",
             api_hash=API_HASH,
             api_id=API_ID,
             workers=BOT_WORKERS,
@@ -68,5 +68,3 @@ class User(Client):
                 "Bot Berhenti."
             )
             sys.exit()
-
-bot = User()
