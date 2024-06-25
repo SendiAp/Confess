@@ -7,8 +7,8 @@ from pyrogram.types import *
 from Confess.config import *
 from Confess import *
 
-@Bot.on_message(filters.command("start"))
-async def start_(client : Bot, message : Message):
+@Bot.on_message(filters.command("confess"))
+async def confess(client : Bot, message : Message):
     quantity = 1
     inp = message.text.split(None, 2)[1]
     user = await client.get_chat(inp)
