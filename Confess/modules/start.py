@@ -19,6 +19,14 @@ FORCESUB = InlineKeyboardMarkup(
     ]
 )
 
+CONFESS = """
+<b>💌ANDA MENDAPATKAN PESAN MENFESS</b>
+
+{}
+
+© @PTSMProject
+"""
+
 @Bot.on_message(filters.command("confess"))
 async def confess(client : User, message : Message):
     text = None
@@ -39,10 +47,8 @@ async def confess(client : User, message : Message):
             return
         user_id = user.id
 
-    message1 = await client.ask(message.chat.id, f"🤖 <b>Bot:</b> Berikan saya nama anda atau nama palsu atau bisa pake Anonymous. (5-10 karakter)", filters=filters.text)
+    message = await client.ask(message.chat.id, f"🤖 <b>Bot:</b> Silahkan tuliskan pesannya, Min 20Karakter", filters=filters.text)
 
-    message2 = await client.ask(message.chat.id, f"🤖 <b>Bot:</b> Berikan saya nama target yang ingin di confess. (5-10 karakter)", filters=filters.text)
-
-    message3 = await client.ask(message.chat.id, f"🤖 <b>Bot:</b> Berikan saya pesan untuk target. (5-500 karakter)", filters=filters.text)
-
-    await bot.send_message(user_id, f"<b>💌 ANDA MENDAPATKAN PESAN CONFESS</b>\n\n<b>From:</b> {message1.text}\n<b>To:</b> {message2.text}\n<b>Message:</b> {message3.text}", reply_markup=FORCESUB)
+    try:
+        await bot.send_message(user_id, CONFESS.format(('> message'))
+    
