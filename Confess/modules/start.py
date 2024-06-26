@@ -9,23 +9,14 @@ from pyrogram.enums import ParseMode
 from Confess.config import *
 from Confess import *
 
-FORCESUB = InlineKeyboardMarkup(
-    [
-        [
-            InlineKeyboardButton("Bergabung Ke Groups", url=f"t.me/PTSMProject"),
-        ],
-        [
-            InlineKeyboardButton("Coba Lagi", url=f"t.me/KetikaOtakPerluInspirasi1"),
-        ],
-    ]
-)
-
 CONFESS = """
 **💌ANDA MENDAPATKAN PESAN MENFESS**
 
 {}
 
 © @PTSMProject
+
+Sent Via 
 """
 
 @Bot.on_message(filters.command("send_text"))
