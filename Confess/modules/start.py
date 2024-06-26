@@ -28,8 +28,8 @@ CONFESS = """
 © @PTSMProject
 """
 
-@Bot.on_message(filters.command("confess"))
-async def confess(client : User, message : Message):
+@Bot.on_message(filters.command("send_text"))
+async def send_text(client : User, message : Message):
     text = None
     if message.reply_to_message:
         user_id = message.reply_to_message.from_user.id
@@ -48,8 +48,9 @@ async def confess(client : User, message : Message):
             return
         user_id = user.id
 
+    await message.reply(f"🤜 Target Ditemukan {user.mention}")
     message = await client.ask(message.chat.id, f"🤖 <b>Bot:</b> Silahkan tuliskan pesannya, Min 20Karakter", filters=filters.text)
 
     try:
-        await bot.send_message(user_id, CONFESS.format(('> message'))
+        await bot.send_message(user_id, CONFESS.format(('> message')), parse_mode=ParseMode.MARKDOWN)
     
