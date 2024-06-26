@@ -21,7 +21,7 @@ FORCESUB = InlineKeyboardMarkup(
 )
 
 CONFESS = """
-<b>💌ANDA MENDAPATKAN PESAN MENFESS</b>
+**💌ANDA MENDAPATKAN PESAN MENFESS**
 
 {}
 
@@ -52,7 +52,7 @@ async def send_text(client : User, message : Message):
     message = await client.ask(message.chat.id, f"🤖 <b>Bot:</b> Silahkan tuliskan pesannya, Min 20Karakter", filters=filters.text)
 
     try:
-        await bot.send_message(user_id, CONFESS.format(('> message')), parse_mode=ParseMode.MARKDOWN)
+        await bot.send_message(user_id, CONFESS.format((f'> {message}')), parse_mode=ParseMode.MARKDOWN)
         await message.reply("🏍️ Oke, @KangKurirMenfess Akan Segera Jalan.")
         await message.reply("💌 Pesanmu Sudah Sampai.")
     except BaseException as e:
