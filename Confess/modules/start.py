@@ -12,7 +12,7 @@ from Confess import *
 async def confess(client : User, message : Message):
     quantity = 1
     inp = message.text.split(None, 2)[1]
-    user = await client.get_chat(inp)
+    user = await bot.get_chat(inp)
     spam_text = ' '.join(message.command[2:])
     quantity = int(quantity)
 
