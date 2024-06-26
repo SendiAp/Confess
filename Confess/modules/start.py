@@ -33,3 +33,5 @@ async def confess(client : User, message : Message):
     message2 = await client.ask(message.chat.id, f"🤖 <b>Bot:</b> Berikan saya nama target yang ingin di confess. (5-10 karakter)", filters=filters.text)
 
     message3 = await client.ask(message.chat.id, f"🤖 <b>Bot:</b> Berikan saya pesan untuk target. (5-500 karakter)", filters=filters.text)
+
+    await bot.send_message(user_id, f"<b>💌 ANDA MENDAPATKAN PESAN CONFESS</b>\n\n<b>From:</b> {message1.text}\n<b>To:</b> {message2.text}\n<b>Message:</b> {message3.text}")
