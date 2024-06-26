@@ -48,7 +48,7 @@ async def send_text(client : User, message : Message):
             return
         user_id = user.id
 
-    await message.reply(f"🤜 Target Ditemukan {user.mention}")
+    await message.reply(f"🤜 Target Ditemukan {username}")
     message = await client.ask(message.chat.id, f"🤖 <b>Bot:</b> Silahkan tuliskan pesannya, Min 20Karakter", filters=filters.text)
 
     try:
