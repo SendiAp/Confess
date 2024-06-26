@@ -20,7 +20,7 @@ async def confess(client : Bot, message : Message):
             return
         username = text[1]
         try:
-            user = await client.get_users(username)
+            user = await client.get_chat(username)
         except ValueError:
             user = None
         if user is None:
