@@ -4,6 +4,7 @@ import os
 from pyrogram import *
 from pyromod import listen
 from pyrogram.types import *
+from pyrogram.enums import ParseMode
 
 from Confess.config import *
 from Confess import *
