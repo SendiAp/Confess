@@ -59,7 +59,7 @@ async def send_text(client : User, message : Message):
         return await message.reply(f"`{e}`\n\nBuruan lapor @pikyus7")
 
 @Bot.on_message(filters.command("send_photo"))
-async def send_text(client : User, message : Message):
+async def send_photo(client : User, message : Message):
     text = None
     if message.reply_to_message:
         user_id = message.reply_to_message.from_user.id
