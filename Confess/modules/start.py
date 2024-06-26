@@ -9,7 +9,7 @@ from Confess.config import *
 from Confess import *
 
 @Bot.on_message(filters.command("confess"))
-async def confess(client : Bot, message : Message):
+async def confess(client : bot, message : Message):
     text = None
     if message.reply_to_message:
         user_id = message.reply_to_message.from_user.id
