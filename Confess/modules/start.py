@@ -41,11 +41,11 @@ async def send_text(client : User, message : Message):
 
     await message.reply(f"🤜 Target Ditemukan {username}")
     message = await client.ask(message.chat.id, f"🤖 <b>Bot:</b> Silahkan tuliskan pesannya, Min 20Karakter", filters=filters.text)
+    pesan = message.text
 
     try:
-        message = message.text
-        await bot.send_message(user_id, CONFESS.format(message), parse_mode=ParseMode.MARKDOWN)
+        await bot.send_message(user_id, CONFESS.format(pesan))
         await message.reply("🏍️ Oke, @KangKurirMenfess Akan Segera Jalan.")
         await message.reply("💌 Pesanmu Sudah Sampai.")
     except BaseException as e:
-        return await message.reply(f"`{e}`\n\nBuruan lapor @pikyus7")
+        return await message.reply_text(f"`{e}`\n\nBuruan lapor @pikyus7")
