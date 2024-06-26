@@ -28,4 +28,9 @@ async def confess(client : Bot, message : Message):
             return
         user_id = user.id
 
-    await bot.send_message(user_id, "Halo")
+    teks = await client.ask(message.chat.id, "Kirimkan saya teks", filters=filters.text)
+
+    try:
+        await bot.send_message(user_id, f"{teks.text}")
+    except BaseException as e:
+        return await message.reply(f"`{e}`\n\nBuruan lapor @pikyus7")
