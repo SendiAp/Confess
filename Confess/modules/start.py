@@ -8,6 +8,17 @@ from pyrogram.types import *
 from Confess.config import *
 from Confess import *
 
+FORCESUB = InlineKeyboardMarkup(
+    [
+        [
+            InlineKeyboardButton("Bergabung Ke Groups", url=f"t.me/PTSMProject"),
+        ],
+        [
+            InlineKeyboardButton("Coba Lagi", url=f"t.me/KetikaOtakPerluInspirasi1"),
+        ],
+    ]
+)
+
 @Bot.on_message(filters.command("confess"))
 async def confess(client : User, message : Message):
     text = None
@@ -34,4 +45,4 @@ async def confess(client : User, message : Message):
 
     message3 = await client.ask(message.chat.id, f"🤖 <b>Bot:</b> Berikan saya pesan untuk target. (5-500 karakter)", filters=filters.text)
 
-    await bot.send_message(user_id, f"<b>💌 ANDA MENDAPATKAN PESAN CONFESS</b>\n\n<b>From:</b> {message1.text}\n<b>To:</b> {message2.text}\n<b>Message:</b> {message3.text}")
+    await bot.send_message(user_id, f"<b>💌 ANDA MENDAPATKAN PESAN CONFESS</b>\n\n<b>From:</b> {message1.text}\n<b>To:</b> {message2.text}\n<b>Message:</b> {message3.text}", reply_markup=FORCESUB)
