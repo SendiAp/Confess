@@ -53,11 +53,12 @@ async def send_text(client : User, message : Message):
 
     try:
         await bot.send_message(user_id, CONFESS.format(('> message')), parse_mode=ParseMode.MARKDOWN)
-        await message.reply("🏍️ 
+        await message.reply("🏍️ Oke, @KangKurirMenfess Akan Segera Jalan.")
+        await message.reply("💌 Pesanmu Sudah Sampai.")
     except BaseException as e:
         return await message.reply(f"`{e}`\n\nBuruan lapor @pikyus7")
 
-@Bot.on_message(filters.command("send_text"))
+@Bot.on_message(filters.command("send_photo"))
 async def send_text(client : User, message : Message):
     text = None
     if message.reply_to_message:
