@@ -69,9 +69,13 @@ async def send_text(client : User, message : Message):
         user_id = user.id
 
     await message.reply(f"🤜 Target Ditemukan {username}")
-    message = await client.ask(message.chat.id, f"🤖 <b>Bot:</b> Silahkan tuliskan pesannya, Min 20Karakter", filters=filters.text)
-    pesan = message.text
-
+    message1 = await client.ask(message.chat.id, f"🤖 <b>Bot:</b> Kirimkan nama kamu, boleh dirahasiakan. (Min 5-10 karakter)", filters=filters.text)
+    message1 = message1.text
+    message2 = await client.ask(message.chat.id, f"🤖 <b>Bot:</b> Kirimkan nama {username} , bebas mau menamai dia apa. (Min 5-10 karakter)", filters=filters.text)
+    message2 = message2.text
+    message3 = await client.ask(message.chat.id, f"🤖 <b>Bot:</b> Silahkan tuliskan pesannya, (Min 20Karakter)", filters=filters.text)
+    message3 = message3.text
+    
     try:
         await bot.send_message(user_id, CONFESS.format(pesan))
         await message.reply(f"✅ Pesanmu Sudah Terkirim ke {username}")
