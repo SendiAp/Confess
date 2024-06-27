@@ -2,7 +2,7 @@ from pyrogram.types import *
 from typing import Dict, List, Union
 from motor.motor_asyncio import AsyncIOMotorClient
 
-from config import *
+from Confess.config import *
 
 mongo_client = AsyncIOMotorClient(MONGO_DB_URL)
 db = mongo_client[DB_NAME]
