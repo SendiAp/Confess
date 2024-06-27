@@ -10,6 +10,8 @@ from Confess.config import *
 from Confess.helper.db import *
 from Confess import *
 
+ADMINS = [6847847442]
+
 CLOSE = InlineKeyboardMarkup(
     [
         [
@@ -90,7 +92,7 @@ async def close(client: Bot, query: CallbackQuery):
 
 @Bot.on_message(filters.command("id") & filters.private)
 async def id(client : User, message : Message):
-    await message.reply(f"Your ID {message.from_user.id}")
+    await message.reply(f"Your ID `{message.from_user.id}`")
     
 @Bot.on_message(filters.command("send_text"))
 async def send_text(client : User, message : Message):
