@@ -58,6 +58,10 @@ async def start(client : User, message : Message):
 @app.on_callback_query(filters.regex("close"))	
 async def close(client: Bot, query: CallbackQuery):
     await query.message.delete()
+
+@Bot.on_message(filters.command("id") & filters.private)
+async def id(client : User, message : Message):
+    await message.reply(f"Your ID {message.from_user.id}")
     
 @Bot.on_message(filters.command("send_text"))
 async def send_text(client : User, message : Message):
