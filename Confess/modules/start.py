@@ -77,7 +77,7 @@ async def send_text(client : User, message : Message):
     message3 = message3.text
     
     try:
-        await bot.send_message(user_id, CONFESS.format(pesan))
-        await message.reply(f"✅ Pesanmu Sudah Terkirim ke {username}")
+        await bot.send_message(user_id, CONFESS.format(message1, message2, message3))
+        await message.reply(f"✅ Your message has been successfully sent to {username}")
     except BaseException as e:
         return await message.reply_text(f"`{e}`\n\nBuruan lapor @pikyus7")
