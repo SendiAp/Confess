@@ -13,9 +13,9 @@ CONFESS = """
 **💌ADA MENFESS NIH**
 
 **From:** {}
-**To:*** {}
+**To:** {}
 
-{}
+__{}__
 
 © @PTSMProject
 Sent Via @SendConfessBot
