@@ -61,11 +61,7 @@ async def send_text(client : User, message : Message):
         try:
             user = await bot.get_chat(username)
         except ValueError:
-            user = None
-        if user is None:
-            await message.reply_text(f"{username} tidak di temukan.")
-            return
-        user_id = user.id
+            return await message.reply_text(f"{username} tidak di temukan.")
 
     await message.reply(f"🤜 Target Ditemukan {username}")
     message1 = await client.ask(message.chat.id, f"🤖 <b>Bot:</b> Kirimkan nama kamu, boleh dirahasiakan. (Min 5-10 karakter)", filters=filters.text)
@@ -76,7 +72,7 @@ async def send_text(client : User, message : Message):
     message3 = message3.text
     
     try:
-        await bot.send_message(user_id, CONFESS.format(message1, message2, message3))
-        await message.reply(f"✅ Your message has been successfully sent to {username}")
+        await bot.send_message(user.id, CONFESS.format(message1, message2, message3))
+        await message.reply(f"<b>✅ Your message has been successfully sent to</b> {username}")
     except BaseException as e:
         return await message.reply_text(f"`{e}`\n\nBuruan lapor @pikyus7")
