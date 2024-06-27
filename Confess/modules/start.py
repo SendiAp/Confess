@@ -152,7 +152,7 @@ async def send_msg(chat_id, message: Message):
 
 @Bot.on_message(filters.command("gucast"))
 @admins
-async def SMProjectUser(bot : Client, message : Message):
+async def SMProjectUser(client : Bot, message : Message):
     users = await get_gcast()
     msg = get_arg(message)
     if message.reply_to_message:
@@ -186,7 +186,7 @@ MSG = """
 
 @Bot.on_message(filters.command("stats"))
 @admins
-async def stats(bot : Client, message : Message):
+async def stats(client : Bot, message : Message):
     ss = await get_gcast()
     user = len(ss)
     await message.reply(MSG.format(group, user))
@@ -206,7 +206,7 @@ FORCESUB = InlineKeyboardMarkup(
 )
 
 @Bot.on_message(filters.incoming & filters.private, group=-1)
-async def ForceSub(client: bot, message: Message):
+async def ForceSub(client: Bot, message: Message):
     if not FORCE_SUB_CHANNEL and not FORCE_SUB_GROUP:  # Not compulsory
         return
     try:
