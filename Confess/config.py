@@ -8,7 +8,17 @@ load_dotenv(".env")
 
 API_ID = getenv("API_ID", "20211998")
 API_HASH = getenv("API_HASH", "beeeebe74c0c467c47c6ac4a1c9d75b5")
+
 BOT_TOKEN = getenv("BOT_TOKEN", "")
+BOT_USERNAME = getenv("BOT_USERNAME", "")
+
+MONGO_DB_URL = getenv("MONGO_DB_URL", "")
+DB_NAME = getenv("DB_NAME", "khodam")
+
+FORCE_SUB_CHANNEL = getenv("FORCE_SUB_CHANNEL", "")
+FORCE_SUB_GROUP = getenv("FORCE_SUB_GROUP", "")
+
+BROADCAST_AS_COPY = True
 
 SESSION = getenv("SESSION", "")
 BOT_WORKERS = getenv("BOT_WORKERS", "4")
