@@ -19,6 +19,33 @@ CONFESS = """
 Sent Via @SendConfessBot
 """
 
+START_TEXT = """
+Halo {} , Saya dapat mengirim pesan menfess ke pengguna lain💌
+
+Gunakan Perintah:
+/send_text (username) pastikan username terdaftar di telegram
+
+👉 ini kurir saya @KangKurirMenfess
+Jangan lupa dishare ketemanmu🤜
+"""
+
+ATTENTION = """
+<b>⛔ BACA PENTING</b>
+
+Karena @KangKurirMenfess masih menggunakan akun pribadi Mimin, mohon untuk minta bantuan untuk mendonasikan nokos telegram yang ber ID 1 atau 2 atau 3 atau 4 atau 5 (salah satu)
+(hanya butuh satu akun saja)
+
+cek /id (pastikan Awalan id nya 1 / 2 / 3 / 4 / 5)
+
+Pesan ini akan hilang jika pengguna lain sudah mendonasikan nya, silahkan hubungi @pikyus7 jika ingin menyumbangkan akunnya.
+"""
+
+@Bot.on_message(filters.command("start") & filters.private)
+async def start(client : User, message : Message):
+    name = message.from_user.first_name
+    await message.reply(START_TEXT.format(name))
+    await message.reply(ATTENTION)
+    
 @Bot.on_message(filters.command("send_text"))
 async def send_text(client : User, message : Message):
     text = None
@@ -45,7 +72,6 @@ async def send_text(client : User, message : Message):
 
     try:
         await bot.send_message(user_id, CONFESS.format(pesan))
-        await message.reply("🏍️ Oke, @KangKurirMenfess Akan Segera Jalan.")
-        await message.reply("💌 Pesanmu Sudah Sampai.")
+        await message.reply(f"✅ Pesanmu Sudah Terkirim ke {username}")
     except BaseException as e:
         return await message.reply_text(f"`{e}`\n\nBuruan lapor @pikyus7")
