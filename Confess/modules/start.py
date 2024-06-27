@@ -10,12 +10,14 @@ from Confess.config import *
 from Confess import *
 
 CONFESS = """
-**💌ANDA MENDAPATKAN PESAN MENFESS**
+**💌ADA MENFESS NIH**
+
+**From:** {}
+**To:*** {}
 
 {}
 
 © @PTSMProject
-
 Sent Via @SendConfessBot
 """
 
