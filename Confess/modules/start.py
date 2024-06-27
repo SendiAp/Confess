@@ -17,8 +17,7 @@ CONFESS = """
 
 __{}__
 
-© @PTSMProject
-Sent Via @SendConfessBot
+© Sent Via @SendConfessBot
 """
 
 START_TEXT = """
