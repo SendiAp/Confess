@@ -7,7 +7,7 @@ from pyrogram.types import *
 from pyrogram.errors import ChatAdminRequired, UserNotParticipant, ChatWriteForbidden
 
 from Confess.config import *
-from Confess.db import *
+from Confess.helper.db import *
 from Confess import *
 
 CLOSE = InlineKeyboardMarkup(
