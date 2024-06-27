@@ -73,7 +73,7 @@ async def send_text(client : User, message : Message):
         try:
             user = await bot.get_chat(username)
         except BaseException as e:
-            return await message.reply_text(f"{username} tidak di temukan.")
+            return await message.reply_text(f"{e}\n\nusername tidak di temukan.")
 
     await message.reply(f"🤜 Target Ditemukan {username}")
     message1 = await client.ask(message.chat.id, f"🤖 <b>Bot:</b> Kirimkan nama kamu, boleh dirahasiakan. (Min 5-10 karakter)", filters=filters.text)
