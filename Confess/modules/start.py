@@ -72,7 +72,7 @@ async def send_text(client : User, message : Message):
         username = text[1]
         try:
             user = await bot.get_chat(username)
-        except ValueError:
+        except BaseException as e:
             return await message.reply_text(f"{username} tidak di temukan.")
 
     await message.reply(f"🤜 Target Ditemukan {username}")
@@ -92,7 +92,11 @@ async def send_text(client : User, message : Message):
         
     message3 = await client.ask(message.chat.id, f"🤖 <b>Bot:</b> Silahkan tuliskan pesannya, (Min 20Karakter)", filters=filters.text)
     message3 = message3.text
-    
+
+    if 5 >= message3:
+        amount = len(message3)
+        return await message.reply(f"🤖 <b>Bot:</b> Pesan terlalu pendek! Silahkan mulai dari awal {amount}/5")
+        
     try:
         await bot.send_message(user.id, CONFESS.format(message1, message2, message3))
         await message.reply(f"<b>✅ Your message has been successfully sent to</b> {username}")
