@@ -9,6 +9,14 @@ from pyrogram.enums import ParseMode
 from Confess.config import *
 from Confess import *
 
+CLOSE = InlineKeyboardMarkup(
+    [
+        [
+            InlineKeyboardButton("Abaikan Pesan ini", callback_data="close")
+        ]
+    ]
+)
+
 CONFESS = """
 **💌ADA MENFESS NIH**
 
@@ -45,7 +53,11 @@ Pesan ini akan hilang jika pengguna lain sudah mendonasikan nya, silahkan hubung
 async def start(client : User, message : Message):
     name = message.from_user.first_name
     await message.reply(START_TEXT.format(name))
-    await message.reply(ATTENTION)
+    await message.reply(ATTENTION, reply_markup=CLOSE)
+
+@app.on_callback_query(filters.regex("close"))	
+async def close(client: Bot, query: CallbackQuery):
+    await query.message.delete()
     
 @Bot.on_message(filters.command("send_text"))
 async def send_text(client : User, message : Message):
