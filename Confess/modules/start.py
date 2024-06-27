@@ -80,7 +80,7 @@ async def send_text(client : User, message : Message):
     message1 = message1.text
     line1 = len(message1)
     
-    if message1 >= 10:
+    if line1 >= 10:
         amount = len(message1)
         return await message.reply(f"🤖 <b>Bot:</b> Nama terlalu panjang! Silahkan mulai dari awal {amount}/10")
         
@@ -88,7 +88,7 @@ async def send_text(client : User, message : Message):
     message2 = message2.text
     line2 = len(message2)
     
-    if message2 >= 10:
+    if line2 >= 10:
         amount = len(message2)
         return await message.reply(f"🤖 <b>Bot:</b> Nama terlalu panjang! Silahkan mulai dari awal {amount}/10")
         
@@ -96,7 +96,7 @@ async def send_text(client : User, message : Message):
     message3 = message3.text
     line3 = len(message3)
     
-    if 5 >= message3:
+    if 5 >= line3:
         amount = len(message3)
         return await message.reply(f"🤖 <b>Bot:</b> Pesan terlalu pendek! Silahkan mulai dari awal {amount}/5")
         
