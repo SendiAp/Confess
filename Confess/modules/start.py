@@ -191,7 +191,7 @@ MSG = """
 async def stats(client : Bot, message : Message):
     ss = await get_gcast()
     user = len(ss)
-    await message.reply(MSG.format(group, user))
+    await message.reply(MSG.format(user))
     
 FORCESUB = InlineKeyboardMarkup(
     [
