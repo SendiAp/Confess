@@ -84,8 +84,7 @@ Pesan ini akan hilang jika pengguna lain sudah mendonasikan nya, silahkan hubung
 async def start(client : User, message : Message):
     name = message.from_user.first_name
     await message.reply(START_TEXT.format(name))
-    await message.reply(ATTENTION, reply_markup=CLOSE)
-
+    
 @app.on_callback_query(filters.regex("close"))	
 async def close(client: Bot, query: CallbackQuery):
     await query.message.delete()
@@ -138,6 +137,7 @@ async def send_text(client : User, message : Message):
     try:
         await bot.send_message(user.id, CONFESS.format(message1, message2, message3))
         await message.reply(f"<b>✅ Your message has been successfully sent to</b> {username}")
+        await message.reply(ATTENTION, reply_markup=CLOSE)
     except BaseException as e:
         return await message.reply_text(f"`{e}`\n\nBuruan lapor @pikyus7")
 
