@@ -24,15 +24,15 @@ async def ForceSub(client: Bot, message: Message):
         return
     try:
         try:
-            await client.get_chat_member(FORCE_SUB_CHANNEL, message.from_user.id)
-            await client.get_chat_member(FORCE_SUB_GROUP, message.from_user.id)
+            await app.get_chat_member(FORCE_SUB_CHANNEL, message.from_user.id)
+            await app.get_chat_member(FORCE_SUB_GROUP, message.from_user.id)
         except UserNotParticipant:
             if FORCE_SUB_CHANNEL.isalpha():
                 link = "https://t.me/" + FORCE_SUB_CHANNEL
             if FORCE_SUB_CHANNEL.isalpha():
                 link2 = "https://t.me/" + FORCE_SUB_GROUP
             else:
-                chat_info = await client.get_chat(FORCE_SUB_CHANNEL)
+                chat_info = await app.get_chat(FORCE_SUB_CHANNEL)
                 link = chat_info.invite_link
                 chat = await client.get_chat(FORCE_SUB_GROUP)
                 link2 = chat.invite_link
