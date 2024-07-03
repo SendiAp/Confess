@@ -61,10 +61,14 @@ async def send_text(client : User, message : Message):
     if 5 >= line3:
         amount = len(message3)
         return await message.reply(f"🤖 <b>Bot:</b> Pesan terlalu pendek! Silahkan mulai dari awal {amount}/5")
-        
-    try:
+
+    if user not in data['limit']:
+        data['limit'][user] = 0
+
+    if data['limit'][user] >= int(1):
+        data['limit'][user] -= int(1)
         await bot.send_message(user.id, CONFESS.format(message1, message2, message3))
         await message.reply(f"<b>💌 [Berhasil Mengrim Confess..!](tg://openmessage?user_id={user_id})")
-        await message.reply(ATTENTION, reply_markup=CLOSE)
-    except BaseException as e:
-        return await message.reply_text(f"`{e}`\n\nBuruan lapor @pikyus7")
+        json.dump(data, open('users.json', 'w'))
+    else:
+        await message.reply(f"❌ Limit {message.from_user.first_name} tidak mencukupi...!")
