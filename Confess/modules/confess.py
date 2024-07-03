@@ -66,13 +66,14 @@ async def send_text(client : User, message : Message):
         amount = len(message3)
         return await message.reply(f"🤖 <b>Bot:</b> Pesan terlalu pendek! Silahkan mulai dari awal {amount}/5")
 
+    send = str(message.from_user.id)
     if user not in data['limit']:
-        data['limit'][user] = 0
+        data['limit'][send] = 0
 
-    if data['limit'][user] >= int(1):
-        data['limit'][user] -= int(1)
+    if data['limit'][send] >= int(1):
+        data['limit'][send] -= int(1)
         await bot.send_message(user.id, CONFESS.format(message1, message2, message3))
-        await message.reply(f"<b>💌 [Berhasil Mengrim Confess..!](tg://openmessage?user_id={user_id})")
+        await message.reply(f"<b>💌 [Berhasil Mengrim Confess..!](tg://openmessage?user_id=user_id)")
         json.dump(data, open('users.json', 'w'))
     else:
         await message.reply(f"❌ Gagal, Limit {message.from_user.first_name} tidak mencukupi...!")
