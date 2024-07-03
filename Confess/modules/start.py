@@ -127,5 +127,3 @@ async def send_text(client : User, message : Message):
         await message.reply(ATTENTION, reply_markup=CLOSE)
     except BaseException as e:
         return await message.reply_text(f"`{e}`\n\nBuruan lapor @pikyus7")
-
-async def send_msg(chat_id, message: Message):
