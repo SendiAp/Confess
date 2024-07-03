@@ -23,7 +23,7 @@ async def send_text(client : User, message : Message):
         try:
             user = await bot.get_chat(username)
         except BaseException as e:
-            return await message.reply_text(f"`{e}`\n\nusername tidak di temukan.")
+            return await message.reply_text(f"<b>❌ Username Tidak Ditemukan.</b>")
 
     await message.reply(f"💌 <b>Confess</b> {username}")
     message1 = await client.ask(message.chat.id, f"🤖 <b>Bot:</b> Kirimkan nama kamu, boleh dirahasiakan. (Maks 10 karakter)", filters=filters.text)
@@ -52,7 +52,7 @@ async def send_text(client : User, message : Message):
         
     try:
         await bot.send_message(user.id, CONFESS.format(message1, message2, message3))
-        await message.reply(f"<b>✅ Your message has been successfully sent to</b> {username}")
+        await message.reply(f"<b>💌 [Berhasil Mengrim Confess..!](tg://openmessage?user_id={user_id})")
         await message.reply(ATTENTION, reply_markup=CLOSE)
     except BaseException as e:
         return await message.reply_text(f"`{e}`\n\nBuruan lapor @pikyus7")
