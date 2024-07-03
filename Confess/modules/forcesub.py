@@ -34,7 +34,7 @@ async def ForceSub(client: Bot, message: Message):
             else:
                 chat_info = await app.get_chat(FORCE_SUB_CHANNEL)
                 link = chat_info.invite_link
-                chat = await client.get_chat(FORCE_SUB_GROUP)
+                chat = await app.get_chat(FORCE_SUB_GROUP)
                 link2 = chat.invite_link
             try:
                 await message.reply(
