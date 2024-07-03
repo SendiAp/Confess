@@ -34,17 +34,6 @@ def broadcast(func):
         await func(client, message)
     return wrapper
 
-CONFESS = """
-**💌ADA MENFESS NIH**
-
-**From:** {}
-**To:** {}
-
-__{}__
-
-© Sent Via @SendConfessBot
-"""
-
 START_TEXT = """
 Halo {} , Saya dapat mengirim pesan menfess ke pengguna lain💌
 
