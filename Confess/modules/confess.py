@@ -126,6 +126,7 @@ async def send_photo(client : User, message : Message):
         amount = len(message3)
         return await message.reply(f"🤖 <b>Bot:</b> Pesan terlalu pendek! Silahkan mulai dari awal {amount}/5")
 
+    user = str(user_id)
     if user not in data['limit']:
         data['limit'][user] = 0
 
