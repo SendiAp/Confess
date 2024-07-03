@@ -67,16 +67,16 @@ async def send_text(client : User, message : Message):
         return await message.reply(f"🤖 <b>Bot:</b> Pesan terlalu pendek! Silahkan mulai dari awal {amount}/5")
 
     send = str(message.from_user.id)
-    if user not in data['limit']:
+    if send not in data['limit']:
         data['limit'][send] = 0
 
     if data['limit'][send] >= int(1):
         data['limit'][send] -= int(1)
         await bot.send_message(user.id, CONFESS.format(message1, message2, message3))
-        await message.reply(f"<b>💌 [Berhasil Mengrim Confess..!](tg://openmessage?user_id=user_id)")
+        await message.reply(f"<b>💌 [Berhasil Mengrim Confess..!](tg://openmessage?user_id=user.id)")
         json.dump(data, open('users.json', 'w'))
     else:
-        await message.reply(f"❌ Gagal, Limit {message.from_user.first_name} tidak mencukupi...!")
+        await message.reply(f"❌ Gagal, **💰Point** {message.from_user.first_name} tidak mencukupi...!")
 
 @Bot.on_message(filters.command("send_photo"))
 async def send_photo(client : User, message : Message):
@@ -134,10 +134,10 @@ async def send_photo(client : User, message : Message):
     if data['limit'][send] >= int(1):
         data['limit'][send] -= int(1)
         await bot.send_photo(user.id, generated_link, CONFESS.format(message1, message2, message3))
-        await message.reply(f"<b>💌 [Berhasil Mengrim Confess..!](tg://openmessage?user_id=user_id)")
+        await message.reply(f"<b>💌 [Berhasil Mengrim Confess..!](tg://openmessage?user_id=user.id)")
         json.dump(data, open('users.json', 'w'))
     else:
-        await message.reply(f"❌ Gagal, Limit {message.from_user.first_name} tidak mencukupi...!")
+        await message.reply(f"❌ Gagal, **💰Point** {message.from_user.first_name} tidak mencukupi...!")
         
 @Bot.on_message(filters.command("addlimit"))
 async def addlimit(client, message):
