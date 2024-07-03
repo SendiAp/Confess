@@ -133,7 +133,7 @@ async def send_photo(client : User, message : Message):
     if data['limit'][send] >= int(1):
         data['limit'][send] -= int(1)
         await bot.send_photo(user.id, generated_link, CONFESS.format(message1, message2, message3))
-        await message.reply(f"<b>💌 [Berhasil Mengrim Confess..!](tg://openmessage?user_id={user_id})")
+        await message.reply(f"<b>💌 [Berhasil Mengrim Confess..!](tg://openmessage?user_id=user_id)")
         json.dump(data, open('users.json', 'w'))
     else:
         await message.reply(f"❌ Gagal, Limit {message.from_user.first_name} tidak mencukupi...!")
