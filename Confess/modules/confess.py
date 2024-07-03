@@ -1,4 +1,5 @@
 import asyncio
+import json
 import os
 
 from pyrogram import *
@@ -8,6 +9,17 @@ from pyrogram.types import *
 from Confess.helper.db import *
 from Confess.config import *
 from Confess import *
+
+CONFESS = """
+**💌MENTION CONFESS**
+
+**From:** {}
+**To:** {}
+
+__{}__
+
+© Send Via @SendConfessBot
+"""
 
 @Bot.on_message(filters.command("send_text"))
 async def send_text(client : User, message : Message):
@@ -56,4 +68,3 @@ async def send_text(client : User, message : Message):
         await message.reply(ATTENTION, reply_markup=CLOSE)
     except BaseException as e:
         return await message.reply_text(f"`{e}`\n\nBuruan lapor @pikyus7")
-      
