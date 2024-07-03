@@ -6,9 +6,12 @@ from pyrogram import *
 from pyromod import listen
 from pyrogram.types import *
 
+from telegraph import Telegraph, exceptions, upload_file
 from Confess.helper.db import *
 from Confess.config import *
 from Confess import *
+
+DOWNLOAD_LOCATION = os.environ.get("DOWNLOAD_LOCATION", "./DOWNLOADS/")
 
 CONFESS = """
 **💌MENTION CONFESS**
@@ -72,7 +75,7 @@ async def send_text(client : User, message : Message):
         await message.reply(f"<b>💌 [Berhasil Mengrim Confess..!](tg://openmessage?user_id={user_id})")
         json.dump(data, open('users.json', 'w'))
     else:
-        await message.reply(f"❌ Limit {message.from_user.first_name} tidak mencukupi...!")
+        await message.reply(f"❌ Gagal, Limit {message.from_user.first_name} tidak mencukupi...!")
 
 @Bot.on_message(filters.command("send_photo"))
 async def send_photo(client : User, message : Message):
@@ -125,5 +128,5 @@ async def send_photo(client : User, message : Message):
         await message.reply(f"<b>💌 [Berhasil Mengrim Confess..!](tg://openmessage?user_id={user_id})")
         json.dump(data, open('users.json', 'w'))
     else:
-        await message.reply(f"❌ Limit {message.from_user.first_name} tidak mencukupi...!")
+        await message.reply(f"❌ Gagal, Limit {message.from_user.first_name} tidak mencukupi...!")
         
