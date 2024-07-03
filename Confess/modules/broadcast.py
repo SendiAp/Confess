@@ -1,3 +1,13 @@
+import asyncio
+import os
+
+from pyrogram import *
+from pyromod import listen
+from pyrogram.types import *
+
+from Confess.helper.db import *
+from Confess.config import *
+from Confess import *
 
 async def send_msg(chat_id, message: Message):
     try:
@@ -10,8 +20,7 @@ async def send_msg(chat_id, message: Message):
         await asyncio.sleep(int(e.value))
         return send_msg(chat_id, message)
 
-@Bot.on_message(filters.command("gucast"))
-@admins
+@Bot.on_message(filters.command("gucast") & filters.user(OWNER_ID))
 async def SMProjectUser(client : Bot, message : Message):
     users = await get_gcast()
     msg = get_arg(message)
