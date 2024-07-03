@@ -138,6 +138,32 @@ async def send_photo(client : User, message : Message):
         json.dump(data, open('users.json', 'w'))
     else:
         await message.reply(f"❌ Gagal, **💰Point** {message.from_user.first_name} tidak mencukupi...!")
+
+@Bot.on_message(filters.command("addblacklist"))
+async def addblacklist(client, message):
+
+    blacklist = get_blacklist()
+    if message.from_user.id in blacklist:
+        return await message.reply(f"❌ {message.from_user.first_name} sudah di daftar blacklist.")
+
+    try: 
+        await add_blacklist(message.from_user.id)
+        await message.reply(f"✅ **{message.from_user.first_name}** Akun anda aman dari kiriman menfess.")
+    except BaseException as e:
+        return await message.reply(f"`{e}`\n\nBuruan lapor @pikyus7")
+
+@Bot.on_message(filters.command("delblacklist"))
+async def delblacklist(client, message):
+
+    blacklist = get_blacklist()
+    if message.from_user.id not in blacklist:
+        return await message.reply(f"❌ {message.from_user.first_name} tidak di daftar blacklist.")
+
+    try: 
+        await remove_blacklist(message.from_user.id)
+        await message.reply(f"✅ **{message.from_user.first_name}** Akun anda sekarang diizinkan untuk mengirim menfess.")
+    except BaseException as e:
+        return await message.reply(f"`{e}`\n\nBuruan lapor @pikyus7")
         
 @Bot.on_message(filters.command("addlimit"))
 async def addlimit(client, message):
