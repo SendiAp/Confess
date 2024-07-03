@@ -9,8 +9,6 @@ from Confess.helper.db import *
 from Confess.config import *
 from Confess import *
 
-ADMINS = [6847847442]
-
 CLOSE = InlineKeyboardMarkup(
     [
         [
@@ -18,16 +16,6 @@ CLOSE = InlineKeyboardMarkup(
         ]
     ]
 )
-
-def admins(func):
-    async def wrapper(client, message):
-        user_id = message.from_user.id
-        if user_id not in ADMINS:
-            p = await message.reply_text(f"❌ <b>Hanya Admins!</b>")
-            await p.delete()
-            return 
-        await func(client, message)
-    return wrapper
     
 def get_arg(message: Message):
     msg = message.text
@@ -141,53 +129,3 @@ async def send_text(client : User, message : Message):
         return await message.reply_text(f"`{e}`\n\nBuruan lapor @pikyus7")
 
 async def send_msg(chat_id, message: Message):
-    try:
-        if BROADCAST_AS_COPY is False:
-            await message.forward(chat_id=chat_id)
-        elif BROADCAST_AS_COPY is True:
-            await message.copy(chat_id=chat_id)
-        return 200, None
-    except FloodWait as e:
-        await asyncio.sleep(int(e.value))
-        return send_msg(chat_id, message)
-
-@Bot.on_message(filters.command("gucast"))
-@admins
-async def SMProjectUser(client : Bot, message : Message):
-    users = await get_gcast()
-    msg = get_arg(message)
-    if message.reply_to_message:
-        msg = message.reply_to_message
-
-    if not msg:
-        await message.reply(text="**Reply atau berikan saya sebuah pesan!**")
-        return
-    
-    out = await message.reply(text="**Memulai Broadcast...**")
-    
-    if not users:
-        await out.edit(text="**Maaf, Broadcast Gagal Karena Belum Ada user**")
-        return
-    
-    done = 0
-    failed = 0
-    for user in users:
-        try:
-            await send_msg(user, message=msg)
-            done += 1
-        except:
-            failed += 1
-    await out.edit(f"✅ **Berhasil Mengirim Pesan Ke {done} User.**\n❌ **Gagal Mengirim Pesan Ke {failed} User.**")
-
-MSG = """
-<b>📊 Statistik</b>
-
-<b>Jumlah Users:</b> {}
-"""
-
-@Bot.on_message(filters.command("stats"))
-@admins
-async def stats(client : Bot, message : Message):
-    ss = await get_gcast()
-    user = len(ss)
-    await message.reply(MSG.format(user))
