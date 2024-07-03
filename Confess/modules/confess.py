@@ -98,7 +98,7 @@ async def send_photo(client : User, message : Message):
 
     message = await client.ask(message.chat.id, f"🤖 <b>Bot:</b> Kirimkan foto nya maks 5mb (jangan mengandung pornografi)", filters=filters.media)
     medianame = DOWNLOAD_LOCATION + str(message.from_user.id)
-    await bot.download_media(message=message, file_name=medianame)
+    await app.download_media(message=message, file_name=medianame)
     link = upload_file(medianame)
     generated_link = "https://telegra.ph" + "".join(link)
 
