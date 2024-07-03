@@ -207,7 +207,7 @@ FORCESUB = InlineKeyboardMarkup(
     ]
 )
 
-@Bot.on_message(filters.incoming & filters.private, group=-1)
+@app.on_message(filters.incoming & filters.private, group=-1)
 async def ForceSub(client: Bot, message: Message):
     if not FORCE_SUB_CHANNEL and not FORCE_SUB_GROUP:  # Not compulsory
         return
