@@ -146,4 +146,13 @@ async def addlimit(client, message):
         await message.reply("❌ Gunakan Format /addlimit (user_id) - (limit)")
         return
 
+    data = json.load(open('users.json', 'r'))
+    user = str(user_id)
     
+    if user not in data['limit']:
+        data['limit'][user] = 0
+
+    json.dump(data, open('users.json', 'w'))
+    data['limit'][user] += int(limit)
+    json.dump(data, open('users.json', 'w'))
+    await message.reply(f"✅ Berhasil Mengirim Limit, Sebesar {limit}")
