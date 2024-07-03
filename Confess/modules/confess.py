@@ -95,6 +95,13 @@ async def send_photo(client : User, message : Message):
 
     data = json.load(open('users.json', 'r'))
     await message.reply(f"💌 <b>Confess</b> {username}")
+
+    await client.ask(message.chat.id, f"🤖 <b>Bot:</b> Kirimkan foto nya maks 5mb (jangan mengandung pornografi)", filters=filters.photo)
+    medianame = DOWNLOAD_LOCATION + str(message.from_user.id)
+    await bot.download_media(message=message, file_name=medianame)
+    link = upload_file(medianame)
+    generated_link = "https://telegra.ph" + "".join(link)
+
     message1 = await client.ask(message.chat.id, f"🤖 <b>Bot:</b> Kirimkan nama kamu, boleh dirahasiakan. (Maks 10 karakter)", filters=filters.text)
     message1 = message1.text
     line1 = len(message1)
@@ -124,7 +131,7 @@ async def send_photo(client : User, message : Message):
 
     if data['limit'][user] >= int(1):
         data['limit'][user] -= int(1)
-        await bot.send_message(user.id, CONFESS.format(message1, message2, message3))
+        await bot.send_photo(user.id, generated_link, CONFESS.format(message1, message2, message3))
         await message.reply(f"<b>💌 [Berhasil Mengrim Confess..!](tg://openmessage?user_id={user_id})")
         json.dump(data, open('users.json', 'w'))
     else:
