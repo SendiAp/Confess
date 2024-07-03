@@ -96,7 +96,7 @@ async def send_photo(client : User, message : Message):
     data = json.load(open('users.json', 'r'))
     await message.reply(f"💌 <b>Confess</b> {username}")
 
-    await client.ask(message.chat.id, f"🤖 <b>Bot:</b> Kirimkan foto nya maks 5mb (jangan mengandung pornografi)", filters=filters.photo)
+    await client.ask(message.chat.id, f"🤖 <b>Bot:</b> Kirimkan foto nya maks 5mb (jangan mengandung pornografi)", filters=filters.media)
     medianame = DOWNLOAD_LOCATION + str(message.from_user.id)
     await bot.download_media(message=message, file_name=medianame)
     link = upload_file(medianame)
