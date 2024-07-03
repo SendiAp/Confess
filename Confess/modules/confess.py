@@ -138,7 +138,7 @@ async def send_photo(client : User, message : Message):
     else:
         await message.reply(f"❌ Gagal, Limit {message.from_user.first_name} tidak mencukupi...!")
         
-@Bot.on_message(filters.command("addlimit") & filters.user(OWNER_ID))
+@Bot.on_message(filters.command("addlimit"))
 async def addlimit(client, message):
     try:
         user_id = int(message.text.split()[1])
