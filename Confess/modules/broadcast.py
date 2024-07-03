@@ -1,3 +1,5 @@
+
+async def send_msg(chat_id, message: Message):
     try:
         if BROADCAST_AS_COPY is False:
             await message.forward(chat_id=chat_id)
