@@ -11,14 +11,6 @@ from Confess.config import *
 from Confess import *
 
 CTYPE = enums.ChatType
-
-CLOSE = InlineKeyboardMarkup(
-    [
-        [
-            InlineKeyboardButton("Abaikan Pesan ini", callback_data="close")
-        ]
-    ]
-)
     
 def get_arg(message: Message):
     msg = message.text
