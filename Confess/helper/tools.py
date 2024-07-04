@@ -31,4 +31,12 @@ def broadcast(func):
             await add_limit(user_id, limit)
         await func(client, message)
     return wrapper
-    
+
+def broadcast(func):
+    async def wrapper(client, message):
+        blacklist = get_blacklist()
+        user_id = message.from_user.id
+        if user_id not in blacklist:
+            return await message.reply(f"❌ {message.from_user.first_name} tidak di daftar blacklist.")
+        await func(client, message)
+    return wrapper
