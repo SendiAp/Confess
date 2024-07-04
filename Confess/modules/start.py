@@ -35,13 +35,15 @@ def broadcast(func):
     return wrapper
 
 START_TEXT = """
-Halo {} , Saya dapat mengirim pesan menfess ke pengguna lain💌
+👋Hai {}!
+@GroupsHelpBot Adalah <b>Bot yang akan membantu</b> Kalian mengirim menfess crush mu langsung.
 
-Gunakan Perintah:
-/send_text (username) pastikan username terdaftar di telegram
+<b>👉Kurir Saya</b> @KangKurirMenfess Dia akan mengantarkan pesan menfess mu.
 
-👉 ini kurir saya @KangKurirMenfess
-Jangan lupa dishare ketemanmu🤜
+<b>❓ APA SAJA PERINTAHNYA ❓</b>
+Tekan /help untuk melihat semua daftar perintah dan cara kerjanya.
+
+[📃Rules Confess](t.me/PTSMProject)
 """
 
 ATTENTION = """
