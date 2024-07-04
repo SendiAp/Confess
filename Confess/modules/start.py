@@ -48,6 +48,14 @@ async def mulai(client: Bot, query: CallbackQuery):
         await asyncio.sleep(e.value)
         await query.edit_message_text(START_TEXT, reply_markup=START_BUTTONS)
 
+@app.on_callback_query(filters.regex("topup"))	
+async def topup(client: Bot, query: CallbackQuery):
+    try:
+        await query.edit_message_text(PRICE, reply_markup=PRICE_BUTTONS)
+    except FloodWait as e:
+        await asyncio.sleep(e.value)
+        await query.edit_message_text(PRICE, reply_markup=PRICE_BUTTONS)
+        
 @app.on_callback_query(filters.regex("perintah"))	
 async def perintah(client: Bot, query: CallbackQuery):
     try:
