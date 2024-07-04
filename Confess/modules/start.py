@@ -17,7 +17,7 @@ from Confess import *
 from .message import *
 from .buttons import *
 
-@Bot.on_message(filters.command("start") & filters.private)
+@app.on_message(filters.command("start") & filters.private)
 @broadcast
 async def start(client : Bot, message : Message):
     user = message.from_user.mention
