@@ -8,3 +8,14 @@ def get_arg(message: Message):
     if " ".join(split[1:]).strip() == "":
         return ""
     return " ".join(split[1:])
+
+async def addlimit(user_id, limit):
+    data = json.load(open('users.json', 'r'))
+    user = str(user_id)
+    
+    if user not in data['limit']:
+        data['limit'][user] = 0
+
+    json.dump(data, open('users.json', 'w'))
+    data['limit'][user] += int(limit)
+    json.dump(data, open('users.json', 'w'))
