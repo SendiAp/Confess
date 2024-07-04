@@ -19,3 +19,11 @@ START_BUTTONS = InlineKeyboardMarkup(
         ],
     ]
 )
+
+BACK_BUTTONS = InlineKeyboardMarkup(
+    [
+        [
+            InlineKeyboardButton("🔙Kembali", callback_data="start")
+        ]
+    ]
+)
