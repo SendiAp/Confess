@@ -28,7 +28,7 @@ def broadcast(func):
         limit = 10
         if user_id not in broadcast:
             await add_gcast(user_id)
-            await add_limit(user_id, limit)
+            await addlimit(user_id, limit)
         await func(client, message)
     return wrapper
 
