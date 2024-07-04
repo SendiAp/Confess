@@ -16,6 +16,17 @@ START_BUTTONS = InlineKeyboardMarkup(
     ]
 )
 
+PRICE_BUTTONS = InlineKeyboardMarkup(
+    [
+        [
+            InlineKeyboardButton("Beli 💰Point", url=f"mulai"),
+        ],
+        [
+            InlineKeyboardButton("🔙Kembali", callback_data="mulai"),
+        ]
+    ]
+)
+
 BACK_BUTTONS = InlineKeyboardMarkup(
     [
         [
