@@ -151,6 +151,9 @@ async def send_photo(client : User, message : Message):
     else:
         await message.reply(f"❌ Gagal, **💰Point** {message.from_user.first_name} tidak mencukupi...!")
 
+    except BaseException as e:
+        return await message.reply_text(f"<b>❌ Sedang Limit..</b>")
+
 @app.on_message(filters.command("send_spoiler"))
 async def send_spoiler(client : User, message : Message):
     text = None
