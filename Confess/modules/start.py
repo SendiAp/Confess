@@ -15,8 +15,6 @@ from Confess import *
 from .message import *
 from .buttons import *
 
-bonus = {}
-
 @Bot.on_message(filters.command("start") & filters.private)
 @broadcast
 async def start(client : Bot, message : Message):
@@ -26,6 +24,8 @@ async def start(client : Bot, message : Message):
 @app.on_callback_query(filters.regex("mulai"))	
 async def mulai(client: Bot, query: CallbackQuery):
     await query.edit_message_text(START_TEXT, reply_markup=START_BUTTONS)
+
+bonus = {}
 
 @app.on_callback_query(filters.regex("bonus"))
 async def bonus(client: bot, query: CallbackQuery):
@@ -52,7 +52,7 @@ async def bonus(client: bot, query: CallbackQuery):
 @app.on_callback_query(filters.regex("point"))	
 async def point(client: Bot, query: CallbackQuery):
     data = json.load(open('users.json', 'r'))
-    user = str(message.from_user.id)
+    user = str(query.from_user.id)
     name = query.from_user.first_name
     
     if user not in data['limit']:
