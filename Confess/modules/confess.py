@@ -84,7 +84,7 @@ async def send_text(client : User, message : Message):
     else:
         await message.reply(f"❌ Gagal, **💰Point** {message.from_user.first_name} tidak mencukupi...!")
 
-@Bot.on_message(filters.command("send_photo"))
+@app.on_message(filters.command("send_photo"))
 async def send_photo(client : User, message : Message):
     text = None
     if message.reply_to_message:
