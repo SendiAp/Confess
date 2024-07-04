@@ -7,7 +7,7 @@ from pyromod import listen
 from pyrogram.types import *
 
 from telegraph import Telegraph, exceptions, upload_file
-from Confess.tools import *
+from Confess.helper.tools import *
 from Confess.helper.db import *
 from Confess.config import *
 from Confess import *
