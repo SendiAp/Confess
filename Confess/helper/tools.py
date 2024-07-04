@@ -19,3 +19,15 @@ async def addlimit(user_id, limit):
     json.dump(data, open('users.json', 'w'))
     data['limit'][user] += int(limit)
     json.dump(data, open('users.json', 'w'))
+
+def broadcast(func):
+    async def wrapper(client, message):
+        user_id = message.from_user.id
+        broadcast = await get_gcast()
+        limit = 10
+        if user_id not in broadcast:
+            await add_gcast(user_id)
+            await add_limit(user_id, limit)
+        await func(client, message)
+    return wrapper
+    
