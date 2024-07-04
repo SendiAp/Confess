@@ -83,4 +83,4 @@ async def point(client: Bot, query: CallbackQuery):
 
     json.dump(data, open('users.json', 'w'))
     point = data['limit'][user]
-    await query.answer(f"💰Point {name}: {point point}", cache_time=0, show_alert=True)
+    await query.answer(f"💰Point {name}: {point} point", cache_time=0, show_alert=True)
