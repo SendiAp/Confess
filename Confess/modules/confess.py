@@ -153,12 +153,6 @@ async def send_photo(client : User, message : Message):
 @Bot.on_message(filters.command("addblacklist"))
 @addbl
 async def addblacklist(client, message):
-
-    blacklist = get_blacklist()
-    user_id = message.from_user.id
-    if user_id in blacklist:
-        return await message.reply(f"❌ {message.from_user.first_name} sudah di daftar blacklist.")
-
     try: 
         await add_blacklist(message.from_user.id)
         await message.reply(f"✅ **{message.from_user.first_name}** Pengguna lain tidak ada yang bisa mengirim menfess ke akunmu.")
