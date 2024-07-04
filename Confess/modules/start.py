@@ -29,6 +29,15 @@ async def start(client : Bot, message : Message):
             await asyncio.sleep(e.value)
             await message.reply(text=START_TEXT.format(user, username), reply_markup=START_BUTTONS)
 
-@app.on_callback_query(filters.regex("close"))	
-async def close(client: Bot, query: CallbackQuery):
-    await query.message.delete()
+@app.on_callback_query(filters.regex("point"))	
+async def point(client: Bot, query: CallbackQuery):
+    data = json.load(open('users.json', 'r'))
+    user = str(message.from_user.id)
+    name = message.from_user.first_name
+    
+    if user not in data['limit']:
+        data['limit'][user] = 0
+
+    json.dump(data, open('users.json', 'w'))
+    point = data['limit'][user]
+    await query.answer(f"💰Point {name}: 💰{point})
