@@ -14,8 +14,14 @@ Tekan /help untuk melihat semua daftar perintah dan cara kerjanya.
 COMMANDS = """
 <b>Bantuan Untuk Confess</b>
 
-<b>✘ Perintah:</b> `/send_text [username]`
+<b>✘ Perintah:</b> `/send_text [username target]`
 <b>• Keterangan:</b> Mengirim confess dengan teks saja.
+<b>💰Point:</b> -1
 
+<b>✘ Perintah:</b> `/send_photo [username target]`
+<b>• Keterangan:</b> Mengirim confess dengan foto dan teks
+<b>💰Point:</b> -2
 
+© Confess
+"""
 
