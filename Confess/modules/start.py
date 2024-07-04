@@ -40,11 +40,6 @@ async def help(client : Bot, message : Message):
             await asyncio.sleep(e.value)
             await message.reply(text=COMMANDS, reply_markup=BACK_BUTTONS)
 
-@app.on_message(filters.command("Jancok"))
-async def Jancok(client : Bot, message : Message):
-    await remove_gcast(message.from_user.id)
-    await message.reply("berhasil")
-    
 @app.on_callback_query(filters.regex("mulai"))	
 async def mulai(client: Bot, query: CallbackQuery):
     try:
@@ -53,6 +48,14 @@ async def mulai(client: Bot, query: CallbackQuery):
         await asyncio.sleep(e.value)
         await query.edit_message_text(START_TEXT, reply_markup=START_BUTTONS)
 
+@app.on_callback_query(filters.regex("perintah"))	
+async def perintah(client: Bot, query: CallbackQuery):
+    try:
+        await query.edit_message_text(COMMANDS, reply_markup=BACK_BUTTONS)
+    except FloodWait as e:
+        await asyncio.sleep(e.value)
+        await query.edit_message_text(COMMANDS, reply_markup=BACK_BUTTONS)
+        
 @app.on_callback_query(filters.regex("point"))	
 async def point(client: Bot, query: CallbackQuery):
     data = json.load(open('users.json', 'r'))
@@ -64,8 +67,4 @@ async def point(client: Bot, query: CallbackQuery):
 
     json.dump(data, open('users.json', 'w'))
     point = data['limit'][user]
-    await query.answer(f"💰Point {name}: {point}", cache_time=0, show_alert=True)
-
-@app.on_callback_query(filters.regex("perintah"))	
-async def perintah(client: Bot, query: CallbackQuery):
-    await query.edit_message_text(COMMANDS, reply_markup=BACK_BUTTONS)
+    await query.answer(f"💰Point {name}: {point point}", cache_time=0, show_alert=True)
