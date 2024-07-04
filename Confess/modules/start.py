@@ -8,7 +8,7 @@ from pyrogram.errors import FloodWait
 
 from Confess.helper.db import *
 from Confess.config import *
-from Confess.tools import *
+from Confess.helper.tools import *
 from Confess import *
 
 from .message import *
