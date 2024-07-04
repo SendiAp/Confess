@@ -11,10 +11,6 @@ START_BUTTONS = InlineKeyboardMarkup(
             InlineKeyboardButton("💰Topup", callback_data="topup"),
         ],
         [
-            InlineKeyboardButton("🎁Bonus", callback_data="bonus"),
-            InlineKeyboardButton("🛒Shop", callback_data="shop"),
-        ],
-        [
             InlineKeyboardButton("Groups Support", url=f"t.me/KetikaOtakPerluInspirasi1"),
         ],
     ]
