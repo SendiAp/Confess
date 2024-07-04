@@ -32,7 +32,7 @@ def broadcast(func):
         await func(client, message)
     return wrapper
 
-def broadcast(func):
+def addbl(func):
     async def wrapper(client, message):
         blacklist = get_blacklist()
         user_id = message.from_user.id
@@ -40,3 +40,14 @@ def broadcast(func):
             return await message.reply(f"❌ {message.from_user.first_name} tidak di daftar blacklist.")
         await func(client, message)
     return wrapper
+
+def delbl(func):
+    async def wrapper(client, message):
+        blacklist = get_blacklist()
+        user_id = message.from_user.id
+        if user_id not in blacklist:
+            return await message.reply(f"❌ {message.from_user.first_name} sudah di daftar blacklist.")
+        await func(client, message)
+    return wrapper
+    
+        
