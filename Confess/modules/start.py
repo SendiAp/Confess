@@ -15,21 +15,18 @@ from .message import *
 from .buttons import *
 
 bonus = {}
-CTYPE = enums.ChatType
 
-@Bot.on_message(filters.command("start"))
+@Bot.on_message(filters.command("start") & filters.private)
 @broadcast
 async def start(client : Bot, message : Message):
     bot = await app.get_me()
     username = bot.username
     user = message.from_user.mention
-    chat_type = message.chat.type
-    if chat_type == CTYPE.PRIVATE:
-        try:
-            await message.reply(text=START_TEXT.format(user, username), reply_markup=START_BUTTONS)
-        except FloodWait as e:
-            await asyncio.sleep(e.value)
-            await message.reply(text=START_TEXT.format(user, username), reply_markup=START_BUTTONS)
+    try:
+        await message.reply(text=START_TEXT.format(user, username), reply_markup=START_BUTTONS)
+    except FloodWait as e:
+        await asyncio.sleep(e.value)
+        await message.reply(text=START_TEXT.format(user, username), reply_markup=START_BUTTONS)
 
 @app.on_callback_query(filters.regex("start"))	
 async def start(client: Bot, query: CallbackQuery):
