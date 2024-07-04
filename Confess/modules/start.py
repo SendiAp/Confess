@@ -30,6 +30,10 @@ async def start(client : Bot, message : Message):
             await asyncio.sleep(e.value)
             await message.reply(text=START_TEXT.format(user, username), reply_markup=START_BUTTONS)
 
+@app.on_callback_query(filters.regex("start"))	
+async def start(client: Bot, query: CallbackQuery):
+    await query.edit_message_text(START_TEXT, reply_markup=START_BUTTONS)
+    
 @app.on_callback_query(filters.regex("point"))	
 async def point(client: Bot, query: CallbackQuery):
     data = json.load(open('users.json', 'r'))
