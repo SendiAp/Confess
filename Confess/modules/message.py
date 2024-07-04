@@ -50,3 +50,20 @@ REGULATION = """
 <b>Melanggar?</b>
 ⛔Banned Permanen
 """
+
+PRICE = """
+<b>Daftar Harga 💰Point Confess:</b>
+
++1💰Point | Rp.500perak
+• Berlaku Kelipatan
+
+<b>💳Membership</b>
+<b>+20💰Point</b> per hari
+• Selama 1 Minggu 
+]> Harga : Rp.10.000
+
+<b>+20💰Point</b> per hari
+• Selama 1 Bulan 
+]> Harga : Rp.35.000
+"""
+
