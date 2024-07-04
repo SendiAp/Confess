@@ -33,3 +33,20 @@ COMMANDS = """
 © Confess
 """
 
+REGULATION = """
+<b>Peraturan Confess:</b>
+
+• Dilarang menggunakan kata rasisme atau bullying.
+• Dilarang mengirimkan foto pornografi.
+• Dilarang promosi kepada siapapun.
+• Dilarang membuat keributan.
+
+<b>Terganggu Dikirim Menfess?</b>
+• /addblacklist - Agar akunmu tidak dikirimkan menfess oleh pengguna lain.
+• /delblacklist - Pengguna lain bebas mengirimmu menfess.
+
+<b>NB:</b>Perintah ini juga dapat dikirim melalui kolom chat diakun @KangKurirMenfess dengan menggunakan perintah yang sama seperti diatas.
+
+<b>Melanggar?</b>
+⛔Banned Permanen
+"""
