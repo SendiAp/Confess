@@ -1,4 +1,5 @@
 import asyncio
+import time
 import os
 
 from pyrogram import *
@@ -52,7 +53,7 @@ async def bonus(client: bot, query: CallbackQuery):
 async def point(client: Bot, query: CallbackQuery):
     data = json.load(open('users.json', 'r'))
     user = str(message.from_user.id)
-    name = message.from_user.first_name
+    name = query.from_user.first_name
     
     if user not in data['limit']:
         data['limit'][user] = 0
