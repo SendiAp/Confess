@@ -19,7 +19,7 @@ START_BUTTONS = InlineKeyboardMarkup(
 PRICE_BUTTONS = InlineKeyboardMarkup(
     [
         [
-            InlineKeyboardButton("Beli 💰Point", url=f"mulai"),
+            InlineKeyboardButton("Beli 💰Point", url=f"tg://openmessage?user_id=6847847442"),
         ],
         [
             InlineKeyboardButton("🔙Kembali", callback_data="mulai"),
