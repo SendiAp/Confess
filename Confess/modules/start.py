@@ -15,17 +15,6 @@ from .buttons import *
 
 CTYPE = enums.ChatType
 
-def broadcast(func):
-    async def wrapper(client, message):
-        user_id = message.from_user.id
-        broadcast = await get_gcast()
-        limit = 10
-        if user_id not in broadcast:
-            await add_gcast(user_id)
-            await add_limit(user_id, limit)
-        await func(client, message)
-    return wrapper
-
 @Bot.on_message(filters.command("start"))
 @broadcast
 async def start(client : Bot, message : Message):
