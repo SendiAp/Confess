@@ -40,6 +40,11 @@ async def send_text(client : User, message : Message):
         except BaseException as e:
             return await message.reply_text(f"<b>❌ Username Tidak Ditemukan.</b>")
 
+    pengguna = user.id
+    blacklist = await get_blacklist()
+    if pengguna in blacklist:
+        return await message.reply(f"⛔ {username} Tidak diizinkan akunnya untuk dikirimkan <b>menfess.</b>")
+
     data = json.load(open('users.json', 'r'))
     await message.reply(f"💌 <b>Confess</b> {username}")
     message1 = await client.ask(message.chat.id, f"🤖 <b>Bot:</b> Kirimkan nama kamu, boleh dirahasiakan. (Maks 10 karakter)", filters=filters.text)
@@ -86,7 +91,7 @@ async def send_photo(client : User, message : Message):
     else:
         text = message.text.split()
         if len(text) < 2:
-            await message.reply_text("❌ Format Salah..!\nGunakan Format `/send_text @KangKurirConfess`")
+            await message.reply_text("❌ Format Salah..!\nGunakan Format `/send_photo @KangKurirConfess`")
             return
         username = text[1]
         try:
@@ -94,6 +99,11 @@ async def send_photo(client : User, message : Message):
         except BaseException as e:
             return await message.reply_text(f"<b>❌ Username Tidak Ditemukan.</b>")
 
+    pengguna = user.id
+    blacklist = await get_blacklist()
+    if pengguna in blacklist:
+        return await message.reply(f"⛔ {username} Tidak diizinkan akunnya untuk dikirimkan <b>menfess.</b>")
+        
     data = json.load(open('users.json', 'r'))
     await message.reply(f"💌 <b>Confess</b> {username}")
 
