@@ -1,4 +1,5 @@
 from Confess.config import *
+from pyrogram.types import *
 
 START_BUTTONS = InlineKeyboardMarkup(
     [
