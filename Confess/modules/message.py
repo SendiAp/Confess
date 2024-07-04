@@ -1,4 +1,4 @@
-from Confess.config import *
+from Confess.config import BOT_USERNAME
 
 START_TEXT = """
 👋Hallo!
@@ -10,7 +10,7 @@ START_TEXT = """
 <b>❓ APA SAJA PERINTAHNYA ❓</b>
 Tekan /help untuk melihat semua daftar perintah dan cara kerjanya.
 
-[📃Rules Confess](t.me/PTSMProject)
+[📃Rules Confess](http://t.me/{BOT_USERNAME}?start=rules)
 """
 
 COMMANDS = """
