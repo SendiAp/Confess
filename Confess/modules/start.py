@@ -17,6 +17,8 @@ from Confess import *
 from .message import *
 from .buttons import *
 
+CTYPE = enums.ChatType
+
 @app.on_message(filters.command("start"))
 @broadcast
 async def start(client : Bot, message : Message):
