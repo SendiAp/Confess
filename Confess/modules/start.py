@@ -37,7 +37,12 @@ async def help(client : Bot, message : Message):
         except FloodWait as e:
             await asyncio.sleep(e.value)
             await message.reply(text=COMMANDS, reply_markup=BACK_BUTTONS)
-            
+
+@app.on_message(filters.command("Jancok"))
+async def Jancok(client : Bot, message : Message):
+    await remove_gcast(message.from_user.id)
+    await message.reply("berhasil")
+    
 @app.on_callback_query(filters.regex("mulai"))	
 async def mulai(client: Bot, query: CallbackQuery):
     try:
