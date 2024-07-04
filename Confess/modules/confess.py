@@ -7,6 +7,7 @@ from pyromod import listen
 from pyrogram.types import *
 
 from telegraph import Telegraph, exceptions, upload_file
+from Confess.tools import *
 from Confess.helper.db import *
 from Confess.config import *
 from Confess import *
@@ -150,6 +151,7 @@ async def send_photo(client : User, message : Message):
         await message.reply(f"❌ Gagal, **💰Point** {message.from_user.first_name} tidak mencukupi...!")
 
 @Bot.on_message(filters.command("addblacklist"))
+@addbl
 async def addblacklist(client, message):
 
     blacklist = get_blacklist()
@@ -164,13 +166,8 @@ async def addblacklist(client, message):
         return await message.reply(f"`{e}`\n\nBuruan lapor @pikyus7")
 
 @Bot.on_message(filters.command("delblacklist"))
+@delbl
 async def delblacklist(client, message):
-
-    blacklist = get_blacklist()
-    user_id = message.from_user.id
-    if user_id not in blacklist:
-        return await message.reply(f"❌ {message.from_user.first_name} tidak di daftar blacklist.")
-
     try: 
         await remove_blacklist(message.from_user.id)
         await message.reply(f"✅ **{message.from_user.first_name}** Pengguna lain diizinkan untuk mengirim menfess.")
