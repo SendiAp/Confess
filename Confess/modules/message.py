@@ -22,6 +22,12 @@ COMMANDS = """
 <b>• Keterangan:</b> Mengirim confess dengan foto dan teks
 <b>💰Point:</b> -2
 
+<b>✘ Perintah:</b> /addblacklist
+<b>• Keterangan:</b> Akunmu tidak akan bisa dikirim menfess oleh pengguna. lain.
+
+<b>✘ Perintah:</b> /delblacklist
+<b>• Keterangan:</b> Akunmu akan bebas dikirim menfess oleh pengguna lain.
+
 © Confess
 """
 
