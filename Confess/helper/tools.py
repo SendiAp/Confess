@@ -1,4 +1,5 @@
 import json
+from Confess.helper.db import *
 from pyrogram.types import Message
 
 def get_arg(message: Message):
