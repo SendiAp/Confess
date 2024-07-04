@@ -8,24 +8,21 @@ from pyrogram.errors import FloodWait
 
 from Confess.helper.db import *
 from Confess.config import *
+from Confess.tools import *
 from Confess import *
 
+from .buttons import *
+
 CTYPE = enums.ChatType
-    
-def get_arg(message: Message):
-    msg = message.text
-    msg = msg.replace(" ", "", 1) if msg[1] == " " else msg
-    split = msg[1:].replace("\n", " \n").split(" ")
-    if " ".join(split[1:]).strip() == "":
-        return ""
-    return " ".join(split[1:])
 
 def broadcast(func):
     async def wrapper(client, message):
         user_id = message.from_user.id
         broadcast = await get_gcast()
+        limit = 10
         if user_id not in broadcast:
             await add_gcast(user_id)
+            await add_limit(user_id, limit)
         await func(client, message)
     return wrapper
 
@@ -58,7 +55,3 @@ async def start(client : Bot, message : Message):
 @app.on_callback_query(filters.regex("close"))	
 async def close(client: Bot, query: CallbackQuery):
     await query.message.delete()
-
-@Bot.on_message(filters.command("id") & filters.private)
-async def id(client : User, message : Message):
-    await message.reply(f"Your ID `{message.from_user.id}`")
