@@ -10,7 +10,7 @@ START_TEXT = """
 <b>❓ APA SAJA PERINTAHNYA ❓</b>
 Tekan /help untuk melihat semua daftar perintah dan cara kerjanya.
 
-[📃Rules Confess](http://t.me/{BOT_USERNAME}?start=rules)
+[📃Rules Confess](http://t.me/SendConfessBot?start=rules)
 """
 
 COMMANDS = """
