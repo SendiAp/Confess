@@ -159,7 +159,7 @@ async def send_spoiler(client : User, message : Message):
     else:
         text = message.text.split()
         if len(text) < 2:
-            await message.reply_text("❌ Format Salah..!\nGunakan Format `/send_photo @KangKurirConfess`")
+            await message.reply_text("❌ Format Salah..!\nGunakan Format `/send_spoiler @KangKurirConfess`")
             return
         username = text[1]
         try:
@@ -212,7 +212,7 @@ async def send_spoiler(client : User, message : Message):
     messageid = user.id
     if data['limit'][send] >= int(5):
         data['limit'][send] -= int(5)
-        await bot.send_photo(user.id, generated_link, CONFESS.format(message1, message2, message3))
+        await bot.send_photo(user.id, generated_link, CONFESS.format(message1, message2, message3), has_spoiler=True)
         await message.reply(f"<b>💌 [Berhasil Mengrim Confess..!](tg://openmessage?user_id=messageid)")
         json.dump(data, open('users.json', 'w'))
     else:
