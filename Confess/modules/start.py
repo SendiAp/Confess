@@ -11,6 +11,7 @@ from Confess.config import *
 from Confess.tools import *
 from Confess import *
 
+from .message import *
 from .buttons import *
 
 CTYPE = enums.ChatType
@@ -41,3 +42,7 @@ async def point(client: Bot, query: CallbackQuery):
     json.dump(data, open('users.json', 'w'))
     point = data['limit'][user]
     await query.answer(f"💰Point {name}: 💰{point})
+
+@app.on_callback_query(filters.regex("commands"))	
+async def commands(client: Bot, query: CallbackQuery):
+    await query.edit_message_text(COMMANDS, reply_markup=BACK_BUTTONS)
