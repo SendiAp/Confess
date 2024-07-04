@@ -21,7 +21,7 @@ async def send_msg(chat_id, message: Message):
         await asyncio.sleep(int(e.value))
         return send_msg(chat_id, message)
 
-@Bot.on_message(filters.command("gucast") & filters.user(OWNER_ID))
+@app.on_message(filters.command("gucast") & filters.user(OWNER_ID))
 async def SMProjectUser(client : Bot, message : Message):
     users = await get_gcast()
     msg = get_arg(message)
@@ -48,7 +48,7 @@ async def SMProjectUser(client : Bot, message : Message):
             failed += 1
     await out.edit(f"✅ **Berhasil Mengirim Pesan Ke {done} User.**\n❌ **Gagal Mengirim Pesan Ke {failed} User.**")
 
-@Bot.on_message(filters.command("addlimit"))
+@app.on_message(filters.command("addlimit"))
 async def addlimit(client, message):
     try:
         user_id = int(message.text.split()[1])
@@ -77,7 +77,7 @@ MSG = """
 <b>Jumlah Users:</b> {}
 """
 
-@Bot.on_message(filters.command("stats")  & filters.user(OWNER_ID))
+@app.on_message(filters.command("stats")  & filters.user(OWNER_ID))
 async def stats(client : Bot, message : Message):
     ss = await get_gcast()
     user = len(ss)
