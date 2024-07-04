@@ -14,6 +14,7 @@ from Confess import *
 from .message import *
 from .buttons import *
 
+bonus = {}
 CTYPE = enums.ChatType
 
 @Bot.on_message(filters.command("start"))
@@ -33,7 +34,29 @@ async def start(client : Bot, message : Message):
 @app.on_callback_query(filters.regex("start"))	
 async def start(client: Bot, query: CallbackQuery):
     await query.edit_message_text(START_TEXT, reply_markup=START_BUTTONS)
-    
+
+@app.on_callback_query(filters.regex("bonus"))
+async def bonus(client: bot, query: CallbackQuery):
+    user_id = query.from_user.id
+    user = str(user_id)
+    name = query.from_user.first_name
+    cur_time = int((time.time()))
+    Daily_bonus = 5
+    data = json.load(open('users.json', 'r'))
+
+    if user not in data['gem']:
+        data['gem'][user] = 0
+
+    json.dump(data, open('users.json', 'w'))
+    if (user_id not in bonus.keys()) or (cur_time - bonus[user_id] > 60*60*24):
+        data['gem'][(user)] += int(Daily_bonus)
+        await query.answer(f"{query.from_user.first_name} Berhasil Mendapatkan {Daily_bonus}💰Point", cache_time=0, show_alert=True)
+        bonus[user_id] = cur_time
+        json.dump(data, open('users.json', 'w'))
+    else:
+        await query.answer(f"❌ {name} Hanya dapat mengklaim bonus setiap 24 jam sekali.", cache_time=0, show_alert=True)
+
+
 @app.on_callback_query(filters.regex("point"))	
 async def point(client: Bot, query: CallbackQuery):
     data = json.load(open('users.json', 'r'))
