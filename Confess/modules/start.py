@@ -17,12 +17,17 @@ from Confess import *
 from .message import *
 from .buttons import *
 
-@app.on_message(filters.command("start") & filters.private)
+@app.on_message(filters.command("start"))
 @broadcast
 async def start(client : Bot, message : Message):
-    user = message.from_user.mention
-    await message.reply(text=START_TEXT.format(user), reply_markup=START_BUTTONS)
-
+    chat_type = message.chat.type
+    if chat_type == CTYPE.PRIVATE:
+        try:
+            await message.reply(text=START_TEXT, reply_markup=START_BUTTONS)
+        except FloodWait as e:
+            await asyncio.sleep(e.value)
+            await message.reply(text=START_TEXT, reply_markup=START_BUTTONS)
+            
 @app.on_callback_query(filters.regex("mulai"))	
 async def mulai(client: Bot, query: CallbackQuery):
     await query.edit_message_text(START_TEXT, reply_markup=START_BUTTONS)
