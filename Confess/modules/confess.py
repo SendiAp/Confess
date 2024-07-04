@@ -148,7 +148,7 @@ async def addblacklist(client, message):
 
     try: 
         await add_blacklist(message.from_user.id)
-        await message.reply(f"✅ **{message.from_user.first_name}** Akun anda aman dari kiriman menfess.")
+        await message.reply(f"✅ **{message.from_user.first_name}** Pengguna lain tidak ada yang bisa mengirim menfess ke akunmu.")
     except BaseException as e:
         return await message.reply(f"`{e}`\n\nBuruan lapor @pikyus7")
 
@@ -161,7 +161,7 @@ async def delblacklist(client, message):
 
     try: 
         await remove_blacklist(message.from_user.id)
-        await message.reply(f"✅ **{message.from_user.first_name}** Akun anda sekarang diizinkan untuk mengirim menfess.")
+        await message.reply(f"✅ **{message.from_user.first_name}** Pengguna lain diizinkan untuk mengirim menfess.")
     except BaseException as e:
         return await message.reply(f"`{e}`\n\nBuruan lapor @pikyus7")
         
