@@ -48,6 +48,29 @@ async def SMProjectUser(client : Bot, message : Message):
             failed += 1
     await out.edit(f"✅ **Berhasil Mengirim Pesan Ke {done} User.**\n❌ **Gagal Mengirim Pesan Ke {failed} User.**")
 
+@Bot.on_message(filters.command("addlimit"))
+async def addlimit(client, message):
+    try:
+        user_id = int(message.text.split()[1])
+        limit = int(message.text.split()[2])
+    except (IndexError, ValueError):
+        await message.reply("❌ Gunakan Format /addlimit (user_id) - (limit)")
+        return
+
+    data = json.load(open('users.json', 'r'))
+    user = str(user_id)
+    
+    if user not in data['limit']:
+        data['limit'][user] = 0
+
+    users = await client.get_users(user_id)
+    name = users.first_name
+    json.dump(data, open('users.json', 'w'))
+    data['limit'][user] += int(limit)
+    json.dump(data, open('users.json', 'w'))
+    await message.reply(f"<b>💳Deposit</b> Sebesar <b>+{limit}💰Point</b> Berhasil masuk akun {name} ..!")
+    await app.send_message(users.id, f"<b>💳Deposit</b> Sebesar <b>+{limit}💰Point</b> Berhasil masuk akunmu ..!")
+    
 MSG = """
 <b>📊 Statistik</b>
 
