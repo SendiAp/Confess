@@ -153,7 +153,8 @@ async def send_photo(client : User, message : Message):
 async def addblacklist(client, message):
 
     blacklist = get_blacklist()
-    if message.from_user.id in blacklist:
+    user_id = message.from_user.id
+    if user_id in blacklist:
         return await message.reply(f"❌ {message.from_user.first_name} sudah di daftar blacklist.")
 
     try: 
@@ -166,7 +167,8 @@ async def addblacklist(client, message):
 async def delblacklist(client, message):
 
     blacklist = get_blacklist()
-    if message.from_user.id not in blacklist:
+    user_id = message.from_user.id
+    if user_id not in blacklist:
         return await message.reply(f"❌ {message.from_user.first_name} tidak di daftar blacklist.")
 
     try: 
