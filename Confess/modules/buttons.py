@@ -11,7 +11,7 @@ START_BUTTONS = InlineKeyboardMarkup(
             InlineKeyboardButton("💰Topup", callback_data="topup"),
         ],
         [
-            InlineKeyboardButton("❓Bantuan", callback_data="help"),
+            InlineKeyboardButton("🎁Bonus", callback_data="help"),
             InlineKeyboardButton("🛒Shop", callback_data="shop"),
         ],
         [
