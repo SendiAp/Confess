@@ -36,13 +36,13 @@ async def bonus(client: bot, query: CallbackQuery):
     Daily_bonus = 5
     data = json.load(open('users.json', 'r'))
 
-    if user not in data['gem']:
-        data['gem'][user] = 0
+    if user not in data['limit']:
+        data['limit'][user] = 0
 
     json.dump(data, open('users.json', 'w'))
     if (user_id not in bonus.keys()) or (cur_time - bonus[user_id] > 60*60*24):
-        data['gem'][(user)] += int(Daily_bonus)
-        await query.answer(f"{query.from_user.first_name} Berhasil Mendapatkan {Daily_bonus}💰Point", cache_time=0, show_alert=True)
+        data['limit'][(user)] += int(Daily_bonus)
+        await query.answer(f"{query.from_user.first_name} Berhasil Mendapatkan +{Daily_bonus}💰Point", cache_time=0, show_alert=True)
         bonus[user_id] = cur_time
         json.dump(data, open('users.json', 'w'))
     else:
