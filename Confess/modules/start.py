@@ -36,7 +36,7 @@ def broadcast(func):
 
 START_TEXT = """
 👋Hai {}!
-@GroupsHelpBot Adalah <b>Bot yang akan membantu</b> Kalian mengirim menfess crush mu langsung.
+@{} Adalah <b>Bot yang akan membantu</b> Kalian mengirim menfess crush mu langsung.
 
 <b>👉Kurir Saya</b> @KangKurirMenfess Dia akan mengantarkan pesan menfess mu.
 
@@ -46,23 +46,20 @@ Tekan /help untuk melihat semua daftar perintah dan cara kerjanya.
 [📃Rules Confess](t.me/PTSMProject)
 """
 
-ATTENTION = """
-<b>⛔ BACA PENTING</b>
-
-Karena @KangKurirMenfess masih menggunakan akun pribadi Mimin, mohon untuk minta bantuan untuk mendonasikan nokos telegram yang ber ID 1 atau 2 atau 3 atau 4 atau 5 (salah satu)
-(hanya butuh satu akun saja)
-
-cek /id (pastikan Awalan id nya 1 / 2 / 3 / 4 / 5)
-
-Pesan ini akan hilang jika pengguna lain sudah mendonasikan nya, silahkan hubungi @pikyus7 jika ingin menyumbangkan akunnya.
-"""
-
-@Bot.on_message(filters.command("start") & filters.private)
+@Bot.on_message(filters.command("start"))
 @broadcast
-async def start(client : User, message : Message):
-    name = message.from_user.first_name
-    await message.reply(START_TEXT.format(name))
-    
+async def start(client : Bot, message : Message):
+    bot = await app.get_me()
+    username = bot.username
+    user = message.from_user.mention
+    chat_type = message.chat.type
+    if chat_type == CTYPE.PRIVATE:
+        try:
+            await message.reply(text=START_TEXT.format(user, username), reply_markup=START_BUTTONS)
+        except FloodWait as e:
+            await asyncio.sleep(e.value)
+            await message.reply(text=START_TEXT.format(user, username), reply_markup=START_BUTTONS)
+
 @app.on_callback_query(filters.regex("close"))	
 async def close(client: Bot, query: CallbackQuery):
     await query.message.delete()
