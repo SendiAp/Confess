@@ -25,7 +25,7 @@ __{}__
 © Send Via @SendConfessBot
 """
 
-@Bot.on_message(filters.command("send_text"))
+@app.on_message(filters.command("send_text"))
 async def send_text(client : User, message : Message):
     text = None
     if message.reply_to_message:
