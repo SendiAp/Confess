@@ -47,6 +47,6 @@ async def point(client: Bot, query: CallbackQuery):
     point = data['limit'][user]
     await query.answer(f"💰Point {name}: 💰{point})
 
-@app.on_callback_query(filters.regex("commands"))	
-async def commands(client: Bot, query: CallbackQuery):
+@app.on_callback_query(filters.regex("perintah"))	
+async def perintah(client: Bot, query: CallbackQuery):
     await query.edit_message_text(COMMANDS, reply_markup=BACK_BUTTONS)
