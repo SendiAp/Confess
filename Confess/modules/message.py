@@ -11,3 +11,11 @@ Tekan /help untuk melihat semua daftar perintah dan cara kerjanya.
 [📃Rules Confess](t.me/PTSMProject)
 """
 
+COMMANDS = """
+<b>Bantuan Untuk Confess</b>
+
+<b>✘ Perintah:</b> `/send_text [username]`
+<b>• Keterangan:</b> Mengirim confess dengan teks saja.
+
+
+
