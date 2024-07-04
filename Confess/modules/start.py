@@ -22,8 +22,8 @@ async def start(client : Bot, message : Message):
     user = message.from_user.mention
     await message.reply(text=START_TEXT.format(user), reply_markup=START_BUTTONS)
 
-@app.on_callback_query(filters.regex("start"))	
-async def start(client: Bot, query: CallbackQuery):
+@app.on_callback_query(filters.regex("mulai"))	
+async def mulai(client: Bot, query: CallbackQuery):
     await query.edit_message_text(START_TEXT, reply_markup=START_BUTTONS)
 
 @app.on_callback_query(filters.regex("bonus"))
