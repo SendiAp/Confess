@@ -1,7 +1,7 @@
 from Confess.config import *
 
 START_TEXT = """
-👋Hai {}!
+👋Hallo!
 
 @SendConfessBot Adalah <b>Bot yang akan membantu</b> Kalian mengirim menfess crush mu langsung.
 
