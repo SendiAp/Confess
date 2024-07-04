@@ -68,7 +68,7 @@ async def point(client: Bot, query: CallbackQuery):
 
     json.dump(data, open('users.json', 'w'))
     point = data['limit'][user]
-    await query.answer(f"💰Point {name}: 💰{point})
+    await query.answer(f"💰Point {name}: 💰{point}")
 
 @app.on_callback_query(filters.regex("perintah"))	
 async def perintah(client: Bot, query: CallbackQuery):
