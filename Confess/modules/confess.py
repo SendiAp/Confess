@@ -142,10 +142,9 @@ async def send_photo(client : User, message : Message):
     if send not in data['limit']:
         data['limit'][send] = 0
 
-    messageid = user.id
     if data['limit'][send] >= int(1):
         data['limit'][send] -= int(1)
-        await message.reply(f"<b>💌 [Berhasil Mengrim Confess..!](tg://openmessage?user_id=messageid)")
+        await message.reply(f"<b>💌 Berhasil Mengrim Confess..!")
         await bot.send_photo(user.id, generated_link, CONFESS.format(message1, message2, message3))
         json.dump(data, open('users.json', 'w'))
     else:
