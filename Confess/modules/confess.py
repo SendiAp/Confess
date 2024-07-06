@@ -78,12 +78,14 @@ async def send_text(client : User, message : Message):
 
     if data['limit'][send] >= int(1):
         data['limit'][send] -= int(1)
-        await bot.send_message(user.id, CONFESS.format(message1, message2, message3))
         await message.reply(f"<b>💌 [Berhasil Mengrim Confess..!](tg://openmessage?user_id=user.id)")
+        await bot.send_message(user.id, CONFESS.format(message1, message2, message3))
         json.dump(data, open('users.json', 'w'))
     else:
         await message.reply(f"❌ Gagal, **💰Point** {message.from_user.first_name} tidak mencukupi...!")
-
+    except BaseException as e:
+        return await message.reply_text(f"`{e}`")
+        
 @app.on_message(filters.command("send_photo"))
 async def send_photo(client : User, message : Message):
     text = None
@@ -211,12 +213,12 @@ async def send_spoiler(client : User, message : Message):
     messageid = user.id
     if data['limit'][send] >= int(5):
         data['limit'][send] -= int(5)
-        await bot.send_photo(user.id, generated_link, CONFESS.format(message1, message2, message3), has_spoiler=True)
         await message.reply(f"<b>💌 [Berhasil Mengrim Confess..!](tg://openmessage?user_id=messageid)")
+        await bot.send_photo(user.id, generated_link, CONFESS.format(message1, message2, message3), has_spoiler=True)
         json.dump(data, open('users.json', 'w'))
     else:
         await message.reply(f"❌ Gagal, **💰Point** {message.from_user.first_name} tidak mencukupi...!")
-        
+
 @Bot.on_message(filters.command("addblacklist"))
 @addbl
 async def addblacklist(client, message):
