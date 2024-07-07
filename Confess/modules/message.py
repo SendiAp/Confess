@@ -1,3 +1,4 @@
+from Confess import *
 from Confess.config import *
 from pyrogram import *
 from pyrogram.errors import FloodWait
