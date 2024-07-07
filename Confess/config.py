@@ -21,6 +21,7 @@ FORCE_SUB_GROUP = getenv("FORCE_SUB_GROUP", "")
 PRICE_TEXT = getenv("PRICE_TEXT", "")
 PRICE_PHOTO = getenv("PRICE_PHOTO", "")
 PRICE_SPOILER = getenv("PRICE_SPOILER", "")
+PRICE_TIMER = getenv("PRICE_TIMER", "")
 
 BROADCAST_AS_COPY = True
 
