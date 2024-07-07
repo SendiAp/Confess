@@ -1,5 +1,6 @@
 from Confess.config import *
 from pyrogram import *
+from pyrogram.errors import FloodWait
 from pyrogram.types import *
 
 START_TEXT = """
