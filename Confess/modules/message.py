@@ -1,4 +1,6 @@
 from Confess.config import *
+from pyrogram import *
+from pyrogram.types import *
 
 START_TEXT = """
 👋Hallo!
@@ -58,16 +60,19 @@ REGULATION = """
 PRICE = """
 <b>Daftar Harga 💰Point Confess:</b>
 
-+1💰Point | Rp.500perak
+<b>+1💰Point</b> | Rp.500perak
 • Berlaku Kelipatan
 
 <b>💳Membership</b>
-<b>+20💰Point</b> per hari
+<b>+1💰Point</b> per hari
 • Selama 1 Minggu 
-]> Harga : Rp.10.000
+]> Harga : Rp.3.000
 
-<b>+20💰Point</b> per hari
+<b>+2💰Point</b> per hari
 • Selama 1 Bulan 
-]> Harga : Rp.35.000
+]> Harga : Rp.25.000
+
+<b>👉 PENGGUNA BARU</b>
+<b>+2💰Point</b> 
 """
 
