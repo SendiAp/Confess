@@ -56,14 +56,6 @@ async def topup(client: Bot, query: CallbackQuery):
         await asyncio.sleep(e.value)
         await query.edit_message_text(PRICE, reply_markup=PRICE_BUTTONS)
         
-@app.on_callback_query(filters.regex("perintah"))	
-async def perintah(client: Bot, query: CallbackQuery):
-    try:
-        await query.edit_message_text(COMMANDS, reply_markup=BACK_BUTTONS)
-    except FloodWait as e:
-        await asyncio.sleep(e.value)
-        await query.edit_message_text(COMMANDS, reply_markup=BACK_BUTTONS)
-
 @app.on_message(filters.regex(pattern="rules"))
 async def rules(app: Bot, message: Message):
     try:
