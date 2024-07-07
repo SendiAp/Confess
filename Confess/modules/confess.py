@@ -279,7 +279,7 @@ async def send_timer(client : User, message : Message):
     if data['limit'][send] >= int(PRICE_TIMER):
         data['limit'][send] -= int(PRICE_TIMER)
         await message.reply(f"<b>💌 Berhasil Mengrim Confess..! -{PRICE_TIMER}💰Point</b>")
-        await bot.send_photo(user.id, generated_link, CONFESS.format(message1, message2, message3), ttl_seconds=10)
+        await bot.send_photo(user.id, generated_link, ttl_seconds=10)
         json.dump(data, open('users.json', 'w'))
     else:
         await message.reply(f"<b>{message.from_user.first_name}</b> Membutuhkan <b>{PRICE_TIMER}💰Point</b>")
