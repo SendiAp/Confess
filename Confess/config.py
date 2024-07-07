@@ -18,7 +18,9 @@ DB_NAME = getenv("DB_NAME", "khodam")
 FORCE_SUB_CHANNEL = getenv("FORCE_SUB_CHANNEL", "")
 FORCE_SUB_GROUP = getenv("FORCE_SUB_GROUP", "")
 
-OWNER_ID = getenv("OWNER_ID", "")
+PRICE_TEXT = getenv("PRICE_TEXT", "")
+PRICE_PHOTO = getenv("PRICE_PHOTO", "")
+PRICE_SPOILER = getenv("PRICE_SPOILER", "")
 
 BROADCAST_AS_COPY = True
 
