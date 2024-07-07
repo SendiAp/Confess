@@ -11,7 +11,7 @@ START_BUTTONS = InlineKeyboardMarkup(
             InlineKeyboardButton("💳Deposit", callback_data="topup"),
         ],
         [
-            InlineKeyboardButton("Groups Support", url=f"t.me/KetikaOtakPerluInspirasi1"),
+            InlineKeyboardButton("Rules Confess", url=f"http://t.me/SendConfessBot?start=rules"),
         ],
     ]
 )
