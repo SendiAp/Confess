@@ -3,6 +3,7 @@ from Confess.config import *
 from pyrogram import *
 from pyrogram.errors import FloodWait
 from pyrogram.types import *
+from .buttons import *
 
 START_TEXT = """
 👋Hallo!
