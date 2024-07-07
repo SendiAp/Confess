@@ -21,7 +21,7 @@ async def send_msg(chat_id, message: Message):
         await asyncio.sleep(int(e.value))
         return send_msg(chat_id, message)
 
-@app.on_message(filters.command("gucast") & filters.user(OWNER_ID))
+@app.on_message(filters.command("gucast"))
 async def SMProjectUser(client : Bot, message : Message):
     users = await get_gcast()
     msg = get_arg(message)
@@ -77,7 +77,7 @@ MSG = """
 <b>Jumlah Users:</b> {}
 """
 
-@app.on_message(filters.command("stats")  & filters.user(OWNER_ID))
+@app.on_message(filters.command("stats"))
 async def stats(client : Bot, message : Message):
     ss = await get_gcast()
     user = len(ss)
