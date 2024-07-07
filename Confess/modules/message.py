@@ -20,15 +20,15 @@ COMMANDS = """
 
 <b>✘ Perintah:</b> `/send_text [username target]`
 <b>• Keterangan:</b> Mengirim confess dengan teks saja.
-<b>💰Point:</b> -{PRICE_TEXT}
+<b>💰Point:</b> -{}
 
 <b>✘ Perintah:</b> `/send_photo [username target]`
 <b>• Keterangan:</b> Mengirim confess dengan foto dan teks
-<b>💰Point:</b> -{PRICE_PHOTO}
+<b>💰Point:</b> -{}
 
 <b>✘ Perintah:</b> `/send_spoiler [username target]`
 <b>• Keterangan:</b> Mengirim confess dengan foto dan spoiler dan teks
-<b>💰Point:</b> -{PRICE_SPOILER}
+<b>💰Point:</b> -{}
 
 <b>✘ Perintah:</b> /addblacklist
 <b>• Keterangan:</b> Akunmu tidak akan bisa dikirim menfess oleh pengguna. lain.
@@ -39,6 +39,14 @@ COMMANDS = """
 © Confess
 """
 
+@app.on_callback_query(filters.regex("perintah"))	
+async def perintah(client: Bot, query: CallbackQuery):
+    try:
+        await query.edit_message_text(COMMANDS.format(PRICE_TEXT, PRICE_PHOTO, PRICE_SPOILER), reply_markup=BACK_BUTTONS)
+    except FloodWait as e:
+        await asyncio.sleep(e.value)
+        await query.edit_message_text(COMMANDS.format(PRICE_TEXT, PRICE_PHOTO, PRICE_SPOILER), reply_markup=BACK_BUTTONS)
+      
 REGULATION = """
 <b>Peraturan Confess:</b>
 
