@@ -15,7 +15,7 @@ START_TEXT = """
 <b>❓ APA SAJA PERINTAHNYA ❓</b>
 Tekan /help untuk melihat semua daftar perintah dan cara kerjanya.
 
-[📃Rules Confess](http://t.me/SendConfessBot?start=rules)
+<b>Version 7.24</b>
 """
 
 COMMANDS = """
