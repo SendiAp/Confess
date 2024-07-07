@@ -76,16 +76,14 @@ async def send_text(client : User, message : Message):
     if send not in data['limit']:
         data['limit'][send] = 0
 
-    if data['limit'][send] >= int(1):
-        data['limit'][send] -= int(1)
-        await message.reply(f"<b>💌 [Berhasil Mengrim Confess..!](tg://openmessage?user_id=user.id)")
+    if data['limit'][send] >= int(PRICE_TEXT):
+        data['limit'][send] -= int(PRICE_TEXT)
+        await message.reply(f"<b>Berhasil Mengrim Confess..! -{PRICE_TEXT}💰Point</b>")
         await bot.send_message(user.id, CONFESS.format(message1, message2, message3))
         json.dump(data, open('users.json', 'w'))
     else:
-        await message.reply(f"❌ Gagal, **💰Point** {message.from_user.first_name} tidak mencukupi...!")
-    except BaseException as e:
-        return await message.reply_text(f"`{e}`")
-        
+        await message.reply(f"<b>{message.from_user.first_name}</b> Membutuhkan <b>{PRICE_TEXT}💰Point</b>")
+
 @app.on_message(filters.command("send_photo"))
 async def send_photo(client : User, message : Message):
     text = None
@@ -144,13 +142,13 @@ async def send_photo(client : User, message : Message):
     if send not in data['limit']:
         data['limit'][send] = 0
 
-    if data['limit'][send] >= int(1):
-        data['limit'][send] -= int(1)
-        await message.reply(f"<b>💌 Berhasil Mengrim Confess..!")
+    if data['limit'][send] >= int(PRICE_PHOTO):
+        data['limit'][send] -= int(PRICE_PHOTO)
+        await message.reply(f"<b>💌 Berhasil Mengrim Confess..! -{PRICE_PHOTO}💰Point</b>")
         await bot.send_photo(user.id, generated_link, CONFESS.format(message1, message2, message3))
         json.dump(data, open('users.json', 'w'))
     else:
-        await message.reply(f"❌ Gagal, **💰Point** {message.from_user.first_name} tidak mencukupi...!")
+        await message.reply(f"<b>{message.from_user.first_name}</b> Membutuhkan <b>{PRICE_PHOTO}💰Point</b>")
 
 @app.on_message(filters.command("send_spoiler"))
 async def send_spoiler(client : User, message : Message):
@@ -211,13 +209,13 @@ async def send_spoiler(client : User, message : Message):
         data['limit'][send] = 0
 
     messageid = user.id
-    if data['limit'][send] >= int(5):
-        data['limit'][send] -= int(5)
-        await message.reply(f"<b>💌 [Berhasil Mengrim Confess..!](tg://openmessage?user_id=messageid)")
+    if data['limit'][send] >= int(PRICE_SPOILER):
+        data['limit'][send] -= int(PRICE_SPOILER)
+        await message.reply(f"<b>💌 Berhasil Mengrim Confess..! -{PRICE_SPOILER}💰Point</b>")
         await bot.send_photo(user.id, generated_link, CONFESS.format(message1, message2, message3), has_spoiler=True)
         json.dump(data, open('users.json', 'w'))
     else:
-        await message.reply(f"❌ Gagal, **💰Point** {message.from_user.first_name} tidak mencukupi...!")
+        await message.reply(f"<b>{message.from_user.first_name}</b> Membutuhkan <b>{PRICE_SPOILER}💰Point</b>")
 
 @Bot.on_message(filters.command("addblacklist"))
 @addbl
