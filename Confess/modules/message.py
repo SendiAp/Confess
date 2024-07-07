@@ -1,4 +1,4 @@
-from Confess.config import BOT_USERNAME
+from Confess.config import *
 
 START_TEXT = """
 👋Hallo!
@@ -18,11 +18,15 @@ COMMANDS = """
 
 <b>✘ Perintah:</b> `/send_text [username target]`
 <b>• Keterangan:</b> Mengirim confess dengan teks saja.
-<b>💰Point:</b> -1
+<b>💰Point:</b> -{PRICE_TEXT}
 
 <b>✘ Perintah:</b> `/send_photo [username target]`
 <b>• Keterangan:</b> Mengirim confess dengan foto dan teks
-<b>💰Point:</b> -2
+<b>💰Point:</b> -{PRICE_PHOTO}
+
+<b>✘ Perintah:</b> `/send_spoiler [username target]`
+<b>• Keterangan:</b> Mengirim confess dengan foto dan spoiler dan teks
+<b>💰Point:</b> -{PRICE_SPOILER}
 
 <b>✘ Perintah:</b> /addblacklist
 <b>• Keterangan:</b> Akunmu tidak akan bisa dikirim menfess oleh pengguna. lain.
