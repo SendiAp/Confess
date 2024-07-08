@@ -7,6 +7,7 @@ from pyromod import listen
 from pyrogram.types import *
 
 from Confess.helper.db import *
+from Confess.helper.tools import *
 from Confess.config import *
 from Confess import *
 
