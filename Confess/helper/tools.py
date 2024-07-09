@@ -3,6 +3,8 @@ from Confess.config import *
 from Confess.helper.db import *
 from pyrogram.types import Message
 
+BALANCE = 2
+
 def get_arg(message: Message):
     msg = message.text
     msg = msg.replace(" ", "", 1) if msg[1] == " " else msg
