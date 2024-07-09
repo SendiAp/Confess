@@ -1,4 +1,5 @@
 import json
+from Confess.config import *
 from Confess.helper.db import *
 from pyrogram.types import Message
 
@@ -25,10 +26,9 @@ def broadcast(func):
     async def wrapper(client, message):
         user_id = message.from_user.id
         broadcast = await get_gcast()
-        limit = 10
         if user_id not in broadcast:
             await add_gcast(user_id)
-            await addlimit(user_id, limit)
+            await addlimit(user_id, BALANCE)
         await func(client, message)
     return wrapper
 
